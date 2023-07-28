@@ -12,6 +12,13 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
+    tokens: {
+      colors: {
+        gBlue: { value: '#647dee' },
+        gPurple: { value: '#7f53ac' },
+        bgBase: { value: '#1a1e2e' },
+      },
+    },
     extend: {},
   },
 
