@@ -3,3 +3,7 @@ base,
 tokens,
 recipes,
 utilities;
+
+body {
+    font-family: 'Overpass', 'Noto Sans JP', sans-serif;
+}
