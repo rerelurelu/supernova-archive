@@ -17,6 +17,7 @@ export default defineConfig({
         gBlue: { value: '#647dee' },
         gPurple: { value: '#7f53ac' },
         bgBase: { value: '#1a1e2e' },
+        bgHeader: { value: '#1a1e2e4d' },
       },
     },
     extend: {},
