@@ -23,16 +23,26 @@ export const useServerTimeLoader = routeLoader$(() => {
 });
 
 export default component$(() => {
-  
   return (
     <>
       <Header />
-      <main class={css({ minH: '100vh', bg: 'bgBase' })}>
-        <div class={css({ px: '3rem', pb: '15rem', pt: '3rem' })}>
+      <main class={rootLayout}>
+        <div class={mainContainer}>
           <Slot />
         </div>
       </main>
       <Footer />
     </>
   );
+});
+
+const rootLayout = css({
+  minH: '100vh',
+  bg: 'bgBase',
+});
+
+const mainContainer = css({
+  px: '3rem',
+  pt: '4rem',
+  pb: '15rem',
 });
