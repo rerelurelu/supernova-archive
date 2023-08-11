@@ -1,14 +1,22 @@
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import type { DocumentHead, Loader } from '@builder.io/qwik-city';
+import { routeLoader$ } from '@builder.io/qwik-city';
+import { getPosts } from '~/api/client';
+import BlogField from '~/components/blogField/blogField';
+import type { Post } from '~/types';
+
+export const useRecentPostsLoader: Loader<Post[]> = routeLoader$(async () => {
+  const posts = await getPosts();
+  return posts;
+});
 
 export default component$(() => {
+  const posts = useRecentPostsLoader();
+  const recentPosts = posts.value.slice(0, 3);
+
   return (
     <>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-        galley of type and scrambled it to make a type specimen book.
-      </p>
+      <BlogField posts={recentPosts} />
     </>
   );
 });

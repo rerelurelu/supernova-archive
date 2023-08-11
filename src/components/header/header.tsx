@@ -6,8 +6,7 @@ import { getPathname } from '~/utils/getPathname';
 
 export default component$(() => {
   const loc = useLocation();
-
-  const pathname = getPathname(loc.url.pathname);
+  const pathname = getPathname(loc.url.pathname).replaceAll('/', '');
 
   return (
     <header class={header}>
