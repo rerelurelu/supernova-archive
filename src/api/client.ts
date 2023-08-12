@@ -1,13 +1,15 @@
+import type { MicroCMSQueries } from 'microcms-js-sdk';
+import { createClient } from 'microcms-js-sdk';
 import Parser from 'rss-parser';
 
 import { ZENN_FEED_URL } from '~/const/url';
-import type { BlogPost, Post, ZennPost } from '~/types';
+import type { MyPost, Post, ZennPost } from '~/types';
 
 export const getPosts = async (): Promise<Post[]> => {
   const parser = new Parser();
   const posts: Post[] = [];
   const feedZenn: ZennPost = await parser.parseURL(ZENN_FEED_URL);
-  const myPosts = await getBlogPosts();
+  const myPosts = await getPostList();
 
   feedZenn.items.map((post: ZennPost) => {
     posts.push({
@@ -19,10 +21,10 @@ export const getPosts = async (): Promise<Post[]> => {
     });
   });
 
-  myPosts.map((post: BlogPost) => {
+  myPosts.contents.map((post: MyPost) => {
     posts.push({
-      key: post.id,
-      link: `/blog/${post.slug}`,
+      key: post.slug,
+      link: `/blog/${post.id}`,
       title: post.title,
       createdAt: post.createdAt.slice(0, 10),
       tags: ['myself'],
@@ -34,28 +36,23 @@ export const getPosts = async (): Promise<Post[]> => {
   return posts;
 };
 
-export const getBlogPosts = async (): Promise<BlogPost[]> => {
-  const response = await fetch(process.env.VITE_CONTENT_API!, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
-        query GetPosts {
-          posts(orderBy: publishedAt_DESC, last: 30) {
-            createdAt
-            title
-            slug
-            id
-          }
-        }
-      `,
-    }),
+export const client = createClient({
+  serviceDomain: import.meta.env.VITE_MICROCMS_SERVICE_DOMAIN,
+  apiKey: import.meta.env.VITE_MICROCMS_API_KEY,
+});
+
+export const getPostList = async (queries?: MicroCMSQueries) => {
+  const dataList = await client.getList<MyPost>({ endpoint: 'blogs', queries });
+
+  return dataList;
+};
+
+export const getPostDetail = async (contentId: string, queries?: MicroCMSQueries) => {
+  const detailData = await client.getListDetail<MyPost>({
+    endpoint: 'blogs',
+    contentId,
+    queries,
   });
 
-  const { data } = await response.json();
-
-  return data.posts;
+  return detailData;
 };

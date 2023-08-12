@@ -13,8 +13,7 @@ export type ZennPost = {
   [key: string]: any;
 };
 
-export type BlogPost = {
-  __typename: string;
+export type MyPost = {
   createdAt: string;
   title: string;
   slug: string;
