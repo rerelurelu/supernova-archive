@@ -41,6 +41,7 @@
     "@fontsource/noto-sans-jp": "^5.0.5",
     "@fontsource/overpass": "^5.0.5",
     "@qwikest/icons": "^0.0.8",
+    "@unpic/qwik": "^0.0.25",
     "rss-parser": "^3.13.0"
   }
 }
