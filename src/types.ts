@@ -15,6 +15,7 @@ export type ZennPost = {
 
 export type MyPost = {
   createdAt: string;
+  publishedAt: string;
   title: string;
   slug: string;
   id: string;

@@ -26,7 +26,7 @@ export const getPosts = async (): Promise<Post[]> => {
       key: post.slug,
       link: `/blog/${post.id}`,
       title: post.title,
-      createdAt: post.createdAt.slice(0, 10),
+      createdAt: post.publishedAt.slice(0, 10),
       tags: ['myself'],
     });
   });

@@ -28,7 +28,7 @@ export default component$(() => {
     return <></>;
   }
 
-  const dateDisplay = convertDateDisplay(post.value.createdAt.slice(0, 10));
+  const dateDisplay = convertDateDisplay(post.value.publishedAt.slice(0, 10));
 
   return (
     <article class={wrapper}>
@@ -36,7 +36,7 @@ export default component$(() => {
         <h1 class={title}>{post.value.title}</h1>
         <div class={infoContainer}>
           <p class={infoText}>Published</p>
-          <time dateTime={post.value.createdAt}>{dateDisplay}</time>
+          <time dateTime={post.value.publishedAt}>{dateDisplay}</time>
         </div>
       </header>
       <div
