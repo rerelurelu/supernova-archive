@@ -47,7 +47,7 @@ export const useFormAction = formAction$<ContactForm>((values) => {
   formData.append('email', values.email);
   formData.append('message', values.message);
 
-  fetch(process.env.PUBLIC_VITE_FORM_ENDPOINT!, {
+  fetch(import.meta.env.PUBLIC_VITE_FORM_ENDPOINT, {
     method: 'POST',
     body: formData,
   });
