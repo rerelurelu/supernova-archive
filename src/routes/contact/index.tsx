@@ -1,10 +1,11 @@
 /* eslint-disable qwik/valid-lexical-scope */
 import { $, component$ } from '@builder.io/qwik';
+import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$, z } from '@builder.io/qwik-city';
 import type { InitialValues, SubmitHandler } from '@modular-forms/qwik';
 import { formAction$, reset, useForm, zodForm$ } from '@modular-forms/qwik';
 import { Toaster, toast } from '~/components/toast';
-import { CONTACT } from '~/const/seo';
+import { OG_IMAGE } from '~/const/seo';
 import { css } from '~/styled-system/css';
 
 const sendMessageType = {
@@ -88,7 +89,7 @@ export default component$(() => {
     <>
       <Toaster position={'top-center'} duration={7000} closeButton />
       <header class={header}>
-        <h1 class={pageTitle}>{CONTACT.TITLE}</h1>
+        <h1 class={pageTitle}>Contact</h1>
       </header>
       <Form onSubmit$={handleSubmit}>
         <div class={formContainer}>
@@ -157,6 +158,48 @@ export default component$(() => {
     </>
   );
 });
+
+export const head: DocumentHead = {
+  title: 'Contact | relu',
+  meta: [
+    {
+      name: 'description',
+      content: `Contact form`,
+    },
+    {
+      name: 'type',
+      content: 'website',
+    },
+    {
+      property: 'og:title',
+      content: 'Contact | relu',
+    },
+    {
+      property: 'og:description',
+      content: `Contact form`,
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      property: 'og:image',
+      content: OG_IMAGE.IMAGE,
+    },
+    {
+      property: 'og:image:type',
+      content: OG_IMAGE.IMAGE_TYPE,
+    },
+    {
+      property: 'og:image:width',
+      content: OG_IMAGE.WIDTH,
+    },
+    {
+      property: 'og:image:height',
+      content: OG_IMAGE.HEIGHT,
+    },
+  ],
+};
 
 const header = css({
   m: { _default: '8rem auto 0', md: '10rem auto 0' },

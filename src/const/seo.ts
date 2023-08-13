@@ -1,29 +1,15 @@
 // Type
-type SEO = {
-  TITLE: string;
-  DESCRIPTION: string;
+type Opengraph = {
+  IMAGE: string;
+  IMAGE_TYPE: string;
+  WIDTH: string;
+  HEIGHT: string;
 };
 
-// Home page
-export const HOME: SEO = {
-  TITLE: `relu's tech blog`,
-  DESCRIPTION: `relu's personal website`,
-};
-
-// Blog page
-export const BLOG: SEO = {
-  TITLE: 'Blog',
-  DESCRIPTION: 'Blog',
-};
-
-// About page
-export const ABOUT: SEO = {
-  TITLE: 'About',
-  DESCRIPTION: 'About me',
-};
-
-// Contact page
-export const CONTACT: SEO = {
-  TITLE: 'Contact',
-  DESCRIPTION: 'Contact form',
+export const OG_IMAGE: Opengraph = {
+  IMAGE:
+    'https://github.com/rerelurelu/kilonova/assets/43092452/f9f07b5d-2bae-4c17-a95e-14a88dd93579',
+  IMAGE_TYPE: 'image/png',
+  WIDTH: '700',
+  HEIGHT: '700',
 };

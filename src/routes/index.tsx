@@ -3,6 +3,7 @@ import type { DocumentHead, Loader } from '@builder.io/qwik-city';
 import { routeLoader$ } from '@builder.io/qwik-city';
 import { getPosts } from '~/api/client';
 import BlogField from '~/components/blogField/blogField';
+import { OG_IMAGE } from '~/const/seo';
 import type { Post } from '~/types';
 
 export const useRecentPostsLoader: Loader<Post[]> = routeLoader$(async () => {
@@ -22,7 +23,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "relu's playground",
+  title: 'relu',
   meta: [
     {
       name: 'description',
@@ -31,6 +32,34 @@ export const head: DocumentHead = {
     {
       name: 'type',
       content: 'website',
+    },
+    {
+      property: 'og:title',
+      content: 'relu',
+    },
+    {
+      property: 'og:description',
+      content: `relu's personal website`,
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      property: 'og:image',
+      content: OG_IMAGE.IMAGE,
+    },
+    {
+      property: 'og:image:type',
+      content: OG_IMAGE.IMAGE_TYPE,
+    },
+    {
+      property: 'og:image:width',
+      content: OG_IMAGE.WIDTH,
+    },
+    {
+      property: 'og:image:height',
+      content: OG_IMAGE.HEIGHT,
     },
   ],
 };
