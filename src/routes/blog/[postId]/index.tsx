@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
+import type { DocumentHead, StaticGenerateHandler } from '@builder.io/qwik-city';
 import { routeLoader$ } from '@builder.io/qwik-city';
-import { getPostDetail } from '~/api/client';
+import { getPostDetail, getPostList } from '~/api/client';
 import { OG_IMAGE } from '~/const/seo';
 import { css } from '~/styled-system/css';
 import { divider } from '~/styled-system/patterns';
@@ -54,6 +54,20 @@ export default component$(() => {
     </article>
   );
 });
+
+export const onStaticGenerate: StaticGenerateHandler = async () => {
+  const { contents } = await getPostList();
+
+  const paths = contents.map((post) => {
+    return post.id;
+  });
+
+  return {
+    params: paths.map((postId) => {
+      return { postId };
+    }),
+  };
+};
 
 export const head: DocumentHead = ({ resolveValue }) => {
   const post = resolveValue(usePostLoader) as MyPost;

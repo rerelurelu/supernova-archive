@@ -23,7 +23,7 @@ export const getPosts = async (): Promise<Post[]> => {
 
   myPosts.contents.map((post: MyPost) => {
     posts.push({
-      key: post.slug,
+      key: post.id,
       link: `/blog/${post.id}`,
       title: post.title,
       createdAt: post.publishedAt.slice(0, 10),
