@@ -10,14 +10,6 @@ export default extendConfig(baseConfig, () => {
         input: ["src/entry.cloudflare-pages.tsx", "@qwik-city-plan"],
       },
     },
-    plugins: [
-      cloudflarePagesAdapter({
-        ssg: {
-        include: ['/*'],
-        origin: 'https://relu.pages.dev',
-        sitemapOutFile: 'sitemap.xml',
-        },
-      })
-    ],
+    plugins: [cloudflarePagesAdapter()],
   };
 });

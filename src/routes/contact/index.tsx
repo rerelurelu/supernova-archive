@@ -3,7 +3,7 @@ import { $, component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$, z } from '@builder.io/qwik-city';
 import type { InitialValues, SubmitHandler } from '@modular-forms/qwik';
-import { formAction$, reset, useForm, zodForm$ } from '@modular-forms/qwik';
+import { reset, useForm, zodForm$ } from '@modular-forms/qwik';
 import { Toaster, toast } from '~/components/toast';
 import { OG_IMAGE } from '~/const/seo';
 import { css } from '~/styled-system/css';
@@ -41,48 +41,45 @@ export const useFormLoader = routeLoader$<InitialValues<ContactForm>>(() => ({
   message: '',
 }));
 
-export const useFormAction = formAction$<ContactForm>((values) => {
-  const formData = new FormData();
-  formData.append('name', values.name);
-  formData.append('email', values.email);
-  formData.append('message', values.message);
-
-  fetch(import.meta.env.PUBLIC_VITE_FORM_ENDPOINT, {
-    method: 'POST',
-    body: formData,
-  });
-}, zodForm$(contactSchema));
-
 export default component$(() => {
   const [contactForm, { Form, Field }] = useForm<ContactForm>({
     loader: useFormLoader(),
-    action: useFormAction(),
     validate: zodForm$(contactSchema),
   });
 
-  const handleSubmit: SubmitHandler<ContactForm> = $(() => {
-    if (contactForm.submitted) {
-      toast.success(sendMessageType.success, {
-        style: {
-          fontSize: '16px',
-          border: '1px solid #0ea5e9',
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
+  const handleSubmit: SubmitHandler<ContactForm> = $(async (values: ContactForm) => {
+    const formData = new FormData();
+    formData.append('name', values.name);
+    formData.append('email', values.email);
+    formData.append('message', values.message);
+
+    await fetch(import.meta.env.PUBLIC_VITE_FORM_ENDPOINT, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(() => {
+        toast.success(sendMessageType.success, {
+          style: {
+            fontSize: '16px',
+            border: '1px solid #0ea5e9',
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
+        reset(contactForm, ['name', 'email', 'message']);
+      })
+      .catch(() => {
+        toast.error(sendMessageType.error, {
+          style: {
+            fontSize: '16px',
+            border: '1px solid #f43f5e',
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
       });
-      reset(contactForm, ['name', 'email', 'message']);
-    } else {
-      toast.error(sendMessageType.error, {
-        style: {
-          fontSize: '16px',
-          border: '1px solid #f43f5e',
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      });
-    }
   });
 
   return (
