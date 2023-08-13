@@ -14,7 +14,7 @@ export default extendConfig(baseConfig, () => {
       cloudflarePagesAdapter({
         ssg: {
           include: ['/*'],
-          origin: 'https://rerelurelu/pages.dev',
+          origin: 'https://relu.pages.dev',
           sitemapOutFile: 'sitemap.xml',
         },
       }),

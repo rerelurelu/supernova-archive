@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rerelurelu/pages.dev/sitemap.xml
+Sitemap: https://relu.pages.dev/sitemap.xml
