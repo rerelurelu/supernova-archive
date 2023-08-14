@@ -217,7 +217,6 @@ const formContainer = css({
   display: 'grid',
   placeItems: 'center',
   gap: '2.5rem',
-  pb: '10rem',
 });
 
 const fieldContainer = css({
@@ -293,7 +292,7 @@ const button = css({
   fontWeight: '500',
   fontSize: '1.125rem',
   lineHeight: '1.75rem',
-  w: '100%',
+  w: '70%',
   maxW: '24rem',
   mt: '2.5rem',
   bg: { base: '#e879f9', _hover: '#22d3ee' },
