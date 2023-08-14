@@ -1,4 +1,11 @@
-import { defineConfig } from '@pandacss/dev';
+import { defineConfig, defineGlobalStyles } from '@pandacss/dev';
+
+const globalCss = defineGlobalStyles({
+  body: {
+    fontFamily: 'Overpass',
+    color: '#bdc6e9',
+  },
+});
 
 export default defineConfig({
   // Whether to use css reset
@@ -14,8 +21,6 @@ export default defineConfig({
   theme: {
     tokens: {
       colors: {
-        gBlue: { value: '#647dee' },
-        gPurple: { value: '#7f53ac' },
         bgBase: { value: '#1a1e2e' },
         bgHeader: { value: '#1a1e2e4d' },
       },
@@ -25,4 +30,7 @@ export default defineConfig({
 
   // The output directory for your css system
   outdir: 'styled-system',
+
+  // Global styles
+  globalCss,
 });

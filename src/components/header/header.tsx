@@ -30,9 +30,9 @@ export default component$(() => {
 });
 
 const header = css({
-  width: '100%',
+  w: '100%',
   alignItems: 'center',
-  height: '4rem',
+  h: '4rem',
   top: '0',
   left: '0',
   right: '0',
@@ -42,24 +42,24 @@ const header = css({
   display: 'flex',
   justifyContent: { base: 'center', md: 'end' },
   bg: 'bgHeader',
-  position: 'fixed',
+  pos: 'fixed',
   backdropFilter: 'blur(8px)',
 });
 
 const ul = css({
-  width: 'max-content',
+  w: 'max-content',
   display: 'inline-flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
   listStyle: 'none',
-  margin: '0',
-  padding: '0',
+  m: '0',
+  p: '0',
 });
 
 const link = css({
   bg: { _hover: 'transparent', _focus: 'transparent' },
   gap: '0.75rem',
-  padding: '0.75rem 1rem',
+  p: '0.75rem 1rem',
   color: { base: 'white' },
   alignItems: 'center',
   userSelect: 'none',

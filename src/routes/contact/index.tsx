@@ -1,8 +1,8 @@
-/* eslint-disable qwik/valid-lexical-scope */
+import type { QRL } from '@builder.io/qwik';
 import { $, component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$, z } from '@builder.io/qwik-city';
-import type { InitialValues, SubmitHandler } from '@modular-forms/qwik';
+import type { InitialValues } from '@modular-forms/qwik';
 import { reset, useForm, zodForm$ } from '@modular-forms/qwik';
 import { Toaster, toast } from '~/components/toast';
 import { OG_IMAGE } from '~/const/seo';
@@ -47,7 +47,7 @@ export default component$(() => {
     validate: zodForm$(contactSchema),
   });
 
-  const handleSubmit: SubmitHandler<ContactForm> = $(async (values: ContactForm) => {
+  const handleSubmit: QRL<(values: ContactForm) => Promise<void>> = $(async (values) => {
     const formData = new FormData();
     formData.append('name', values.name);
     formData.append('email', values.email);
@@ -199,7 +199,7 @@ export const head: DocumentHead = {
 };
 
 const header = css({
-  m: { _default: '8rem auto 0', md: '10rem auto 0' },
+  m: { base: '8rem auto 0', md: '10rem auto 0' },
 });
 
 const pageTitle = css({
@@ -217,7 +217,6 @@ const formContainer = css({
   display: 'grid',
   placeItems: 'center',
   gap: '2.5rem',
-  pb: '10rem',
 });
 
 const fieldContainer = css({
@@ -293,10 +292,10 @@ const button = css({
   fontWeight: '500',
   fontSize: '1.125rem',
   lineHeight: '1.75rem',
-  w: '100%',
+  w: '70%',
   maxW: '24rem',
   mt: '2.5rem',
-  bg: '#e879f9',
+  bg: { base: '#e879f9', _hover: '#22d3ee' },
   display: 'inline-flex',
   flexShrink: 0,
   cursor: 'pointer',
@@ -314,9 +313,6 @@ const button = css({
   borderWidth: '1px',
   alignItems: 'center',
   justifyContent: 'center',
-  _hover: {
-    bg: '#22d3ee',
-  },
   _disabled: {
     color: 'white',
     opacity: '0.3',
