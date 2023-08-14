@@ -4,6 +4,7 @@ import { css } from '~/styled-system/css';
 import type { Post } from '~/types';
 import { getPathname } from '~/utils/getPathname';
 import PostCard from '../postCard/postCard';
+import { textSm } from '~/style/style';
 
 type Props = {
   posts: Post[];
@@ -30,7 +31,7 @@ export default component$(({ posts }: Props) => {
         })}
       </div>
       {isHome && (
-        <Link href={'/blog'} class={link}>
+        <Link href={'/blog'} class={[link, textSm]}>
           All Posts →
         </Link>
       )}
@@ -51,6 +52,7 @@ const sectionTitle = css({
   fontSize: { _default: '1.25rem', md: '1.875rem' },
   lineHeight: { _default: '1.75rem', md: '2.25rem' },
   textAlign: 'left',
+  color: 'white',
 });
 
 const postCardsContainer = css({
@@ -70,6 +72,4 @@ const link = css({
   mt: { _default: '3rem', md: '4rem' },
   display: 'inline-block',
   textDecoration: 'underline',
-  fontSize: '0.875rem',
-  lineHeight: '1.25rem',
 });

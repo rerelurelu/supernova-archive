@@ -147,7 +147,7 @@ export default component$(() => {
               )}
             </Field>
           </div>
-          <button type="submit" class={button} disabled={contactForm.submitting}>
+          <button type="button" class={button} disabled={contactForm.submitting}>
             {contactForm.submitting ? 'SENDING...' : 'SEND'}
           </button>
         </div>
