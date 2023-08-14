@@ -1,8 +1,8 @@
-/* eslint-disable qwik/valid-lexical-scope */
+import type { QRL } from '@builder.io/qwik';
 import { $, component$ } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$, z } from '@builder.io/qwik-city';
-import type { InitialValues, SubmitHandler } from '@modular-forms/qwik';
+import type { InitialValues } from '@modular-forms/qwik';
 import { reset, useForm, zodForm$ } from '@modular-forms/qwik';
 import { Toaster, toast } from '~/components/toast';
 import { OG_IMAGE } from '~/const/seo';
@@ -47,7 +47,7 @@ export default component$(() => {
     validate: zodForm$(contactSchema),
   });
 
-  const handleSubmit: SubmitHandler<ContactForm> = $(async (values: ContactForm) => {
+  const handleSubmit: QRL<(values: ContactForm) => Promise<void>> = $(async (values) => {
     const formData = new FormData();
     formData.append('name', values.name);
     formData.append('email', values.email);
@@ -147,7 +147,7 @@ export default component$(() => {
               )}
             </Field>
           </div>
-          <button type="button" class={button} disabled={contactForm.submitting}>
+          <button type="submit" class={button} disabled={contactForm.submitting}>
             {contactForm.submitting ? 'SENDING...' : 'SEND'}
           </button>
         </div>
