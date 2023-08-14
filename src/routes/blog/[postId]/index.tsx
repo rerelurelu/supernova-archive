@@ -186,23 +186,23 @@ const postBody = css({
   },
 
   '& h3': {
-    '&::before': {
+    _before: {
       mr: '0.5rem',
-      content: '#',
+      content: '"#"',
     },
   },
 
   '& h4': {
-    '&::before': {
+    _before: {
       mr: '0.5rem',
-      content: '##',
+      content: '"##"',
     },
   },
 
   '& h5': {
-    '&::before': {
+    _before: {
       mr: '0.5rem',
-      content: '###',
+      content: '"###"',
     },
   },
 

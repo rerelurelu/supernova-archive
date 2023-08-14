@@ -55,7 +55,7 @@ const card = css({
 
 const cardBody = css({
   color: 'white',
-  padding: '1.25rem 2.5rem 1.25rem 1.25rem',
+  p: '1.25rem',
   display: 'flex',
   justifyContent: 'space-between',
   flex: '1 1 auto',

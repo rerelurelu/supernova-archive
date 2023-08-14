@@ -296,7 +296,7 @@ const button = css({
   w: '100%',
   maxW: '24rem',
   mt: '2.5rem',
-  bg: '#e879f9',
+  bg: { base: '#e879f9', _hover: '#22d3ee' },
   display: 'inline-flex',
   flexShrink: 0,
   cursor: 'pointer',
@@ -314,9 +314,6 @@ const button = css({
   borderWidth: '1px',
   alignItems: 'center',
   justifyContent: 'center',
-  _hover: {
-    bg: '#22d3ee',
-  },
   _disabled: {
     color: 'white',
     opacity: '0.3',
