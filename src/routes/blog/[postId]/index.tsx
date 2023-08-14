@@ -120,7 +120,7 @@ export const head: DocumentHead = ({ resolveValue }) => {
 
 const wrapper = css({
   mx: 'auto',
-  mt: { _default: '6rem', md: '8rem' },
+  mt: { base: '6rem', md: '8rem' },
   maxW: '48rem',
   display: 'flex',
   flexDir: 'column',

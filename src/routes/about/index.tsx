@@ -98,7 +98,7 @@ export const head: DocumentHead = {
 const container = css({
   display: 'grid',
   placeItems: 'center',
-  mt: { _default: '8rem', md: '9rem' },
+  mt: { base: '8rem', md: '9rem' },
   px: '1.5rem',
 });
 

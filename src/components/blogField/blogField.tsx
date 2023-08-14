@@ -1,10 +1,10 @@
 import { component$ } from '@builder.io/qwik';
 import { Link, useLocation } from '@builder.io/qwik-city';
+import { textSm } from '~/style/style';
 import { css } from '~/styled-system/css';
 import type { Post } from '~/types';
 import { getPathname } from '~/utils/getPathname';
 import PostCard from '../postCard/postCard';
-import { textSm } from '~/style/style';
 
 type Props = {
   posts: Post[];
@@ -44,19 +44,19 @@ const blogFieldContainer = css({
   justifyItems: 'center',
   w: '100%',
   mx: 'auto',
-  mt: { _default: '4rem', base: '6rem', md: '9rem' },
+  mt: { base: '4rem', md: '9rem' },
 });
 
 const sectionTitle = css({
-  mb: { _default: '1.5rem', md: '3rem' },
-  fontSize: { _default: '1.25rem', md: '1.875rem' },
-  lineHeight: { _default: '1.75rem', md: '2.25rem' },
+  mb: { base: '1.5rem', md: '3rem' },
+  fontSize: { base: '1.25rem', md: '1.875rem' },
+  lineHeight: { base: '1.75rem', md: '2.25rem' },
   textAlign: 'left',
   color: 'white',
 });
 
 const postCardsContainer = css({
-  mt: { _default: '2rem', md: '3rem' },
+  mt: { base: '2rem', md: '3rem' },
   display: 'grid',
   w: '100%',
   maxW: '1024px',
@@ -69,7 +69,7 @@ const postCardsContainer = css({
 });
 
 const link = css({
-  mt: { _default: '3rem', md: '4rem' },
+  mt: { base: '3rem', md: '4rem' },
   display: 'inline-block',
   textDecoration: 'underline',
 });

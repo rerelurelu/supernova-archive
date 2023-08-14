@@ -199,7 +199,7 @@ export const head: DocumentHead = {
 };
 
 const header = css({
-  m: { _default: '8rem auto 0', md: '10rem auto 0' },
+  m: { base: '8rem auto 0', md: '10rem auto 0' },
 });
 
 const pageTitle = css({
