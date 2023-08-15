@@ -1,7 +1,6 @@
 import type { MicroCMSQueries } from 'microcms-js-sdk';
 import { createClient } from 'microcms-js-sdk';
 import Parser from 'rss-parser';
-
 import { ZENN_FEED_URL } from '~/const/url';
 import type { MyPost, Post, ZennPost } from '~/types';
 
