@@ -3,7 +3,9 @@ import type { DocumentHead, Loader } from '@builder.io/qwik-city';
 import { routeLoader$ } from '@builder.io/qwik-city';
 import { getPosts } from '~/api/client';
 import BlogField from '~/components/blogField/blogField';
+import Hero from '~/components/hero/hero';
 import { OG_IMAGE } from '~/const/seo';
+import { css } from '~/styled-system/css';
 import type { Post } from '~/types';
 
 export const useRecentPostsLoader: Loader<Post[]> = routeLoader$(async () => {
@@ -17,6 +19,9 @@ export default component$(() => {
 
   return (
     <>
+      <div class={wrapper}>
+        <Hero />
+      </div>
       <BlogField posts={recentPosts} />
     </>
   );
@@ -63,3 +68,10 @@ export const head: DocumentHead = {
     },
   ],
 };
+
+const wrapper = css({
+  w: '100%',
+  h: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+});
