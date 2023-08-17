@@ -87,7 +87,7 @@ export const Toaster = component$<ToasterProps>((props) => {
       ) {
         state.expanded = false;
       }
-    })
+    }),
   );
 
   // There are not toasts to show = no need to render

@@ -24,7 +24,7 @@ export default component$(() => {
       <span class={myName}>relu</span>
       <ul class={iconContainer}>
         <li>
-          <Link href={sns.github.href} target="_blank" class={snsLink}>
+          <Link href={sns.github.href} target='_blank' class={snsLink}>
             <Image
               src={'/icons/github-logo.svg'}
               width={iconSize}
@@ -35,7 +35,7 @@ export default component$(() => {
           </Link>
         </li>
         <li>
-          <Link href={sns.zenn.href} target="_blank" class={snsLink}>
+          <Link href={sns.zenn.href} target='_blank' class={snsLink}>
             <Image
               src={'/icons/zenn-logo.svg'}
               width={iconSize}

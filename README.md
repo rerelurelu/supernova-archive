@@ -9,7 +9,6 @@ This website built with
 
 [Visit the site](https://relu.pages.dev)
 
-
 ```
 □ ■   ■ □   ■ □   ■ ■   ■ □   ■ ■   ■ □   □ □
 ■ ■   □ ■   ■ □   □ □   □ ■   □ □   □ ■   ■ ■

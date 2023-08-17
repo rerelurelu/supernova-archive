@@ -6,8 +6,8 @@ export {
   TOAST_LIFETIME,
   TOAST_WIDTH,
   VIEWPORT_OFFSET,
-} from "./constants";
-export { Observer, generateId } from "./observer";
+} from './constants';
+export { Observer, generateId } from './observer';
 
 export const createOptionsObject = <T>(objOne: T, objTwo: Partial<T>): T => {
   const obj: Record<string, any> = {};
