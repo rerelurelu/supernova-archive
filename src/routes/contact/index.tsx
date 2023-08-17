@@ -289,7 +289,7 @@ const errorText = css({
 });
 
 const button = css({
-  fontWeight: '500',
+  fontWeight: '400',
   fontSize: '1.125rem',
   lineHeight: '1.75rem',
   w: '70%',

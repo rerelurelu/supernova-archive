@@ -11,7 +11,7 @@ export default component$(({ postContent }: Props) => {
 
 const postContainer = css({
   w: '100%',
-  fontWeight: '300',
+  fontWeight: '400',
 
   '& h1, h2, h3, h4, h5, h6': {
     mt: '4rem',
@@ -20,7 +20,7 @@ const postContainer = css({
   '& h1, h2': {
     mb: '0.5rem',
     py: '0.5rem',
-    fontWeight: 'bold',
+    fontWeight: '600',
     borderBottom: '0.0625rem solid #b2ebf24d',
   },
 
