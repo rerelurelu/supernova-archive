@@ -8,8 +8,6 @@ export default component$(() => {
   const loc = useLocation();
   const pathname = getPathname(loc.url.pathname);
 
-  cons;
-
   return (
     <header class={header}>
       <ul class={ul}>
