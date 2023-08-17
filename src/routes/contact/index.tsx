@@ -94,12 +94,12 @@ export default component$(() => {
             <label class={label}>
               <span class={labelText}>{inputContentType.name.label}</span>
             </label>
-            <Field name="name">
+            <Field name='name'>
               {(field, props) => (
                 <>
                   <input
                     {...props}
-                    type="text"
+                    type='text'
                     value={field.value}
                     placeholder={inputContentType.name.placeholder}
                     class={input}
@@ -113,12 +113,12 @@ export default component$(() => {
             <label class={label}>
               <span class={labelText}>{inputContentType.email.label}</span>
             </label>
-            <Field name="email">
+            <Field name='email'>
               {(field, props) => (
                 <>
                   <input
                     {...props}
-                    type="email"
+                    type='email'
                     value={field.value}
                     placeholder={inputContentType.email.placeholder}
                     class={input}
@@ -132,7 +132,7 @@ export default component$(() => {
             <label class={label}>
               <span class={labelText}>{inputContentType.message.label}</span>
             </label>
-            <Field name="message">
+            <Field name='message'>
               {(field, props) => (
                 <>
                   <textarea
@@ -147,7 +147,7 @@ export default component$(() => {
               )}
             </Field>
           </div>
-          <button type="submit" class={button} disabled={contactForm.submitting}>
+          <button type='submit' class={button} disabled={contactForm.submitting}>
             {contactForm.submitting ? 'SENDING...' : 'SEND'}
           </button>
         </div>

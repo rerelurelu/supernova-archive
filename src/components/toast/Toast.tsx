@@ -25,7 +25,7 @@ export const Toast = component$<ToastProps>((props) => {
 
   // use computed to calculate the height of the toast faster
   const actualToastIndex = useComputed$(
-    () => props.state.heights.findIndex((h) => h.toastId === props.toast.id) || 0
+    () => props.state.heights.findIndex((h) => h.toastId === props.toast.id) || 0,
   );
 
   // use computed to calculate toast lifetime
@@ -123,10 +123,10 @@ export const Toast = component$<ToastProps>((props) => {
   return (
     <li
       ref={toastRef}
-      role="status"
+      role='status'
       tabIndex={0}
-      aria-atomic="true"
-      aria-live="polite"
+      aria-atomic='true'
+      aria-live='polite'
       class={props.class + ' ' + (props.toast.class || '')}
       moick-toaster-item
       moick-data-mounted={`${state.mounted}`}
@@ -134,7 +134,7 @@ export const Toast = component$<ToastProps>((props) => {
       moick-data-visible={`${props.index + 1 <= props.visibleToasts}`}
       moick-y-position={y}
       moick-x-position={x}
-      moick-data-styled="true"
+      moick-data-styled='true'
       moick-data-front={`${props.index === 0}`}
       moick-data-type={toastType}
       moick-data-expanded={`${props.state.expanded || (props.expandByDefault && state.mounted)}`}
@@ -150,30 +150,30 @@ export const Toast = component$<ToastProps>((props) => {
     >
       {props.closeButton ? (
         <button
-          aria-label="Close toast"
+          aria-label='Close toast'
           moick-close-button
           onClick$={() => {
             deleteToast();
           }}
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            xmlns='http://www.w3.org/2000/svg'
+            width='12'
+            height='12'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='currentColor'
+            strokeWidth='1.5'
+            strokeLinecap='round'
+            strokeLinejoin='round'
           >
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
+            <line x1='18' y1='6' x2='6' y2='18'></line>
+            <line x1='6' y1='6' x2='18' y2='18'></line>
           </svg>
         </button>
       ) : null}
-      {toastType ? <div moick-data-icon="">{getAsset(toastType)}</div> : null}
-      <div moick-data-content="">
+      {toastType ? <div moick-data-icon=''>{getAsset(toastType)}</div> : null}
+      <div moick-data-content=''>
         <div moick-data-title={props.toast.title}>{props.toast.title}</div>
         {props.toast.description ? (
           <div moick-data-description={props.toast.description} class={props.descriptionClassName}>
