@@ -10,5 +10,5 @@ export const getPathname = (inputString: string): string => {
     return '';
   }
 
-  return matches[0];
+  return matches[0].replaceAll('/', '');
 };
