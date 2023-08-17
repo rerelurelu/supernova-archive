@@ -137,7 +137,7 @@ const header = css({
 const title = css({
   fontSize: '2.25rem',
   lineHeight: '2.5rem',
-  fontWeight: '700',
+  fontWeight: '600',
 });
 
 const infoContainer = css({
@@ -148,7 +148,7 @@ const infoContainer = css({
 });
 
 const infoText = css({
-  fontWeight: '700',
+  fontWeight: '600',
   opacity: '0.6',
 });
 

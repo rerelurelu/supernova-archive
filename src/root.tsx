@@ -2,8 +2,8 @@ import { component$ } from '@builder.io/qwik';
 import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city';
 import { RouterHead } from './components/router-head/router-head';
 
-import '@fontsource/noto-sans-jp';
-import '@fontsource/overpass';
+import '@fontsource/overpass/400.css';
+import '@fontsource/overpass/600.css';
 import './global.css';
 
 export default component$(() => {
