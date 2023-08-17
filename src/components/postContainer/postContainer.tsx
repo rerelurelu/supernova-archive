@@ -117,6 +117,7 @@ const postContainer = css({
     borderRadius: '0.5rem',
     bg: '#2b3047',
     color: '#f2f4ffcc',
+    overflowY: 'scroll',
 
     '& code': {
       py: '1rem',
