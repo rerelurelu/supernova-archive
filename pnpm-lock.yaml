@@ -17,9 +17,6 @@ dependencies:
   '@unpic/qwik':
     specifier: ^0.0.25
     version: 0.0.25(@builder.io/qwik@1.2.6)
-  '@vercel/analytics':
-    specifier: ^1.0.2
-    version: 1.0.2
   microcms-js-sdk:
     specifier: ^2.5.0
     version: 2.5.0
@@ -3484,10 +3481,6 @@ packages:
   /@vanilla-extract/private@1.0.3:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
     dev: true
-
-  /@vercel/analytics@1.0.2:
-    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
-    dev: false
 
   /@vercel/build-utils@6.7.2:
     resolution: {integrity: sha512-STSWs66rxX5pVKkhsYNeLx/Vlxjwe+dhy6PfXgBEJua7FXbWDjXjUyjzEyk63yUWysUflEBtLW9ckS/2V0QCZw==}
