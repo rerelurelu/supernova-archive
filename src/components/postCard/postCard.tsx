@@ -1,15 +1,15 @@
 import { component$ } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
-import { HiArrowTopRightOnSquareOutline } from '@qwikest/icons/heroicons';
 import { textSm } from '~/style/style';
 import { css } from '~/styled-system/css';
+import type { tag } from '~/types';
 import { convertDateDisplay } from '~/utils/convertDateDisplay';
 
 type Props = {
   title: string;
   href: string;
   createdAt: string;
-  tags: string[];
+  tags: tag[];
 };
 
 export default component$(({ title, href, createdAt, tags }: Props) => {
@@ -20,9 +20,8 @@ export default component$(({ title, href, createdAt, tags }: Props) => {
       <div class={cardBody}>
         <header class={cardHeader}>
           <h2 class={cardTitle}>
-            <Link href={href} class={link} target={tags.includes('zenn') ? '_blank' : undefined}>
+            <Link href={href} class={link}>
               {title}
-              {tags.includes('zenn') && <HiArrowTopRightOnSquareOutline class={icon} />}
             </Link>
           </h2>
         </header>
@@ -30,11 +29,11 @@ export default component$(({ title, href, createdAt, tags }: Props) => {
           <time dateTime={createdAt} class={textSm}>
             {dateDisplay}
           </time>
-          <div class={cardActions}>
+          <div class={tagContainer}>
             {tags.map((tag) => (
-              <div key={tag} class={css({ color: '#f0abfc' })}>
+              <div key={tag.id} class={css({ color: '#f0abfc' })}>
                 <span class={[hashTag, textSm]}>#</span>
-                <span>{tag}</span>
+                <span>{tag.tagName}</span>
               </div>
             ))}
           </div>
@@ -85,26 +84,20 @@ const link = css({
   },
 });
 
-const icon = css({
-  display: 'inline-block',
-  h: '1em',
-  verticalAlign: '-0.125rem',
-  ml: '0.1875rem',
-  opacity: '0.6',
-});
-
 const timeContainer = css({
   display: 'flex',
   flexDir: 'column',
   justifyContent: 'end',
 });
 
-const cardActions = css({
+const tagContainer = css({
+  mt: '0.5rem',
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
-  gap: '0.5rem',
+  columnGap: '0.5rem',
+  rowGap: '0',
 });
 
 const hashTag = css({

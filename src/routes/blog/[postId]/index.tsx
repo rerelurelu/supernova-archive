@@ -7,10 +7,12 @@ import { OG_IMAGE } from '~/const/seo';
 import { textSm } from '~/style/style';
 import { css } from '~/styled-system/css';
 import { divider } from '~/styled-system/patterns';
-import type { MyPost } from '~/types';
+import type { Post } from '~/types';
 import { convertDateDisplay } from '~/utils/convertDateDisplay';
 
 export const usePostLoader = routeLoader$(async ({ params, status }) => {
+  console.log(params);
+
   if (!params.postId) {
     status(404);
   }
@@ -58,9 +60,9 @@ export default component$(() => {
 });
 
 export const onStaticGenerate: StaticGenerateHandler = async () => {
-  const { contents } = await getPostList();
+  const data = await getPostList();
 
-  const paths = contents.map((post) => {
+  const paths = data.posts.map((post) => {
     return post.id;
   });
 
@@ -72,7 +74,7 @@ export const onStaticGenerate: StaticGenerateHandler = async () => {
 };
 
 export const head: DocumentHead = ({ resolveValue }) => {
-  const post = resolveValue(usePostLoader) as MyPost;
+  const post = resolveValue(usePostLoader) as Post;
   const description = post.content.slice(0, 30);
 
   return {

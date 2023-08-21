@@ -21,11 +21,11 @@ export default component$(({ posts }: Props) => {
         {posts.map((post) => {
           return (
             <PostCard
-              key={post.key}
+              key={post.id}
               title={post.title}
-              href={post.link}
-              createdAt={post.createdAt}
-              tags={post.tags}
+              href={`/blog/${post.id}`}
+              createdAt={post.publishedAt.slice(0, 10)}
+              tags={post.tags.map((tag) => tag)}
             />
           );
         })}

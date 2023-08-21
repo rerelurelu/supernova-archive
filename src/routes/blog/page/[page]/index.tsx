@@ -1,38 +1,38 @@
 import { component$ } from '@builder.io/qwik';
-import type { DocumentHead, Loader } from '@builder.io/qwik-city';
-import { routeLoader$ } from '@builder.io/qwik-city';
+import type { DocumentHead } from '@builder.io/qwik-city';
+import { routeLoader$, useLocation } from '@builder.io/qwik-city';
 import { getPostList } from '~/api/client';
 import BlogField from '~/components/blogField/blogField';
-import Hero from '~/components/hero/hero';
+import Pagination from '~/components/pagination/pagination';
 import { OG_IMAGE } from '~/const/seo';
-import { css } from '~/styled-system/css';
-import type { PostsData } from '~/types';
+import { PER_PAGE } from '~/utils/constants';
+import { getCurrentIndex } from '~/utils/getCurrentIndex';
 
-export const useRecentPostsLoader: Loader<PostsData> = routeLoader$(async () => {
-  const { posts, totalCount } = await getPostList();
+export const usePostsLoader = routeLoader$(async ({ params }) => {
+  const offset = (Number(params.page) - 1) * PER_PAGE;
+  const { posts, totalCount } = await getPostList({ limit: PER_PAGE, offset: offset });
   return { posts, totalCount };
 });
 
 export default component$(() => {
-  const data = useRecentPostsLoader();
-  const recentPosts = data.value.posts.slice(0, 3);
+  const loc = useLocation();
+  const currentIndex = getCurrentIndex(loc.url.pathname);
+  const data = usePostsLoader();
 
   return (
     <>
-      <div class={wrapper}>
-        <Hero />
-      </div>
-      <BlogField posts={recentPosts} />
+      <BlogField posts={data.value.posts} />
+      <Pagination totalCount={data.value.totalCount} currentIndex={Number(currentIndex)} />
     </>
   );
 });
 
 export const head: DocumentHead = {
-  title: 'relu',
+  title: 'Blog | relu',
   meta: [
     {
       name: 'description',
-      content: `relu's personal website`,
+      content: `relu's blog`,
     },
     {
       name: 'type',
@@ -40,11 +40,11 @@ export const head: DocumentHead = {
     },
     {
       property: 'og:title',
-      content: 'relu',
+      content: 'Blog | relu',
     },
     {
       property: 'og:description',
-      content: `relu's personal website`,
+      content: `relu's blog`,
     },
     {
       property: 'og:type',
@@ -68,10 +68,3 @@ export const head: DocumentHead = {
     },
   ],
 };
-
-const wrapper = css({
-  w: '100%',
-  h: '100vh',
-  display: 'flex',
-  justifyContent: 'center',
-});

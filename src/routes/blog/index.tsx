@@ -1,26 +1,30 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead, Loader } from '@builder.io/qwik-city';
-import { routeLoader$ } from '@builder.io/qwik-city';
-import { getPosts } from '~/api/client';
+import { routeLoader$, useLocation } from '@builder.io/qwik-city';
+import { getPostList } from '~/api/client';
 import BlogField from '~/components/blogField/blogField';
+import Pagination from '~/components/pagination/pagination';
 import { OG_IMAGE } from '~/const/seo';
-import { css } from '~/styled-system/css';
-import type { Post } from '~/types';
+import type { PostsData } from '~/types';
+import { PER_PAGE } from '~/utils/constants';
+import { getCurrentIndex } from '~/utils/getCurrentIndex';
 
-export const usePostsLoader: Loader<Post[]> = routeLoader$(async () => {
-  const posts = await getPosts();
-  return posts;
+export const usePostsLoader: Loader<PostsData> = routeLoader$(async () => {
+  const { posts, totalCount } = await getPostList({ limit: PER_PAGE, offset: 0 });
+  return { posts, totalCount };
 });
 
 export default component$(() => {
-  const posts = usePostsLoader();
+  const loc = useLocation();
+  const currentIndex = getCurrentIndex(loc.url.pathname);
+  const data = usePostsLoader();
+  const totalCount = data.value.totalCount;
+  const needPagination = totalCount > PER_PAGE;
 
   return (
     <>
-      <header class={header}>
-        <h1 class={contentsTitle}>Blog</h1>
-      </header>
-      <BlogField posts={posts.value} />
+      <BlogField posts={data.value.posts} />
+      {needPagination && <Pagination totalCount={totalCount} currentIndex={Number(currentIndex)} />}
     </>
   );
 });
@@ -66,16 +70,3 @@ export const head: DocumentHead = {
     },
   ],
 };
-
-const header = css({
-  m: { base: '8rem auto 0', md: '10rem auto 0' },
-});
-
-const contentsTitle = css({
-  color: 'white',
-  textAlign: 'center',
-  fontSize: '2.25rem',
-  lineHeight: '2.5rem',
-  fontWeight: '400',
-  letterSpacing: '0.1em',
-});
