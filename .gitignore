@@ -45,8 +45,5 @@ lerna-debug.log*
 # Cloudflare
 functions/**/*.js
 
-# Vercel
-.vercel
-
 # Bundle analizer
 stats.html
