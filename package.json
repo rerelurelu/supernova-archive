@@ -55,6 +55,7 @@
     "@modular-forms/qwik": "^0.20.0",
     "@qwikest/icons": "^0.0.8",
     "@unpic/qwik": "^0.0.25",
+    "@vercel/analytics": "^1.0.2",
     "microcms-js-sdk": "^2.5.0"
   }
 }

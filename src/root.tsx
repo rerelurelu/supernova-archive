@@ -5,6 +5,7 @@ import { RouterHead } from './components/router-head/router-head';
 import '@fontsource/overpass/400.css';
 import '@fontsource/overpass/600.css';
 import './global.css';
+import { Analytics } from '@vercel/analytics/react';
 
 export default component$(() => {
   /**
@@ -23,6 +24,7 @@ export default component$(() => {
         <ServiceWorkerRegister />
       </head>
       <body lang='ja'>
+        <Analytics />
         <RouterOutlet />
       </body>
     </QwikCityProvider>
