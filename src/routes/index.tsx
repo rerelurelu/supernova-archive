@@ -1,21 +1,21 @@
 import { component$ } from '@builder.io/qwik';
 import type { DocumentHead, Loader } from '@builder.io/qwik-city';
 import { routeLoader$ } from '@builder.io/qwik-city';
-import { getPostList } from '~/api/client';
+import { getPosts } from '~/api/client';
 import BlogField from '~/components/blogField/blogField';
 import Hero from '~/components/hero/hero';
 import { OG_IMAGE } from '~/const/seo';
 import { css } from '~/styled-system/css';
-import type { PostsData } from '~/types';
+import type { Post } from '~/types';
 
-export const useRecentPostsLoader: Loader<PostsData> = routeLoader$(async () => {
-  const { posts, totalCount } = await getPostList();
-  return { posts, totalCount };
+export const useRecentPostsLoader: Loader<Post[]> = routeLoader$(async () => {
+  const posts = await getPosts();
+  return posts;
 });
 
 export default component$(() => {
-  const data = useRecentPostsLoader();
-  const recentPosts = data.value.posts.slice(0, 3);
+  const posts = useRecentPostsLoader();
+  const recentPosts = posts.value.slice(0, 3);
 
   return (
     <>

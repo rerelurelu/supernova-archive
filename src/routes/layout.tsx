@@ -42,7 +42,7 @@ const rootLayout = css({
 });
 
 const mainContainer = css({
-  px: { base: '1.25rem', md: '3rem' },
+  px: '3rem',
   pt: '4rem',
-  pb: { base: '8rem', lg: '12rem' },
+  pb: '15rem',
 });

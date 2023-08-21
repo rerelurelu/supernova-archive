@@ -1,21 +1,25 @@
 import type { CSSProperties, ClassList } from '@builder.io/qwik';
 
-export type tag = {
-  id: string;
-  tagName: string;
+export type Post = {
+  key: string;
+  link: string;
+  title: string;
+  createdAt: string;
+  tags: string[];
+  slug?: string;
 };
 
-export type Post = {
+export type ZennPost = {
+  [key: string]: any;
+};
+
+export type MyPost = {
+  createdAt: string;
   publishedAt: string;
   title: string;
+  slug: string;
   id: string;
   content: string;
-  tags: tag[];
-};
-
-export type PostsData = {
-  posts: Post[];
-  totalCount: number;
 };
 
 export type FormInputs = {
