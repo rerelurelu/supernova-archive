@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://relu.vercel.app/sitemap.xml
+Sitemap: https://relu.nexus/sitemap.xml
