@@ -12,7 +12,7 @@ export default extendConfig(baseConfig, () => {
     },
     plugins: [
       staticAdapter({
-        origin: "https://relu.pages.dev",
+        origin: "https://relu.vercel.app",
       }),
     ],
   };
