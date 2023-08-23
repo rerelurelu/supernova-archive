@@ -14,6 +14,5 @@ const footer = css({
   py: '3rem',
   bg: 'bgBase',
   letterSpacing: 'widest',
-  color: '#bdc6e9',
   textAlign: 'center',
 });

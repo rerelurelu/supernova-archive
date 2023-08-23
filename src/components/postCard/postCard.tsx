@@ -31,7 +31,7 @@ export default component$(({ title, href, createdAt, tags }: Props) => {
           </time>
           <div class={tagContainer}>
             {tags.map((tag) => (
-              <div key={tag.id} class={css({ color: '#f0abfc' })}>
+              <div key={tag.id} class={css({ color: 'tagName' })}>
                 <span class={[hashTag, textSm]}>#</span>
                 <span>{tag.tagName}</span>
               </div>
@@ -50,7 +50,7 @@ const card = css({
   borderRadius: '1rem',
   h: '12rem',
   overflow: 'hidden',
-  bgImage: 'linear-gradient(to bottom right, #647dee, #7f53ac)',
+  bg: 'bgCard',
 });
 
 const cardBody = css({
@@ -79,7 +79,7 @@ const cardTitle = css({
 
 const link = css({
   _hover: {
-    color: '#f0abfc',
+    color: 'hoverTitle',
     cursor: 'pointer',
   },
 });

@@ -3,7 +3,7 @@ import { defineConfig, defineGlobalStyles } from '@pandacss/dev';
 const globalCss = defineGlobalStyles({
   body: {
     fontFamily: 'Overpass',
-    color: '#bdc6e9',
+    color: 'main',
   },
 });
 
@@ -21,8 +21,38 @@ export default defineConfig({
   theme: {
     tokens: {
       colors: {
+        // Text
+        main: { value: '#bdc6e9' },
+        error: { value: '#f87171' },
+        code: { value: '#f2f4ffcc' },
+        link: { value: '#e879f9' },
+        // Icon
+        paginationIcon: { value: '#c4b5fd' },
+        // Background
         bgBase: { value: '#1a1e2e' },
+        bgCodeBlock: { value: '#2b3047' },
+        // Post card
+        hoverTitle: { value: '#f0abfc' },
+        tagName: { value: '#f0abfc' },
+        bgCard: { value: 'linear-gradient(to bottom right, #647dee, #7f53ac)' },
+        // Button
+        btnBase: { value: '#e879f9' },
+        btnBorder: { value: '#f5d0fe' },
+        hoverBtn: { value: '#22d3ee' },
+        // header
+        activePage: { value: 'linear-gradient(to bottom, #00f1f9, #cb33f4)' },
         bgHeader: { value: '#1a1e2e4d' },
+        // Border
+        avatar: { value: '#999eef' },
+        // Input
+        placeholder: { value: '#475569' },
+        inputBorder: { value: '#999eef' },
+        focusInputBorder: { value: '#7c3aed' },
+        focusInputOutline: { value: '#a5b4fc' },
+        // Pagination
+        paginationBorder: { value: '#c4b5fd' },
+        // Post Detail
+        divider: { value: '#b2ebf24d' },
       },
     },
     extend: {},
