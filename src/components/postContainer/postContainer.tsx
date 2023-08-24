@@ -115,7 +115,7 @@ const postContainer = css({
     my: '3rem',
     p: '1rem',
     borderRadius: '0.5rem',
-    bg: 'bgColorBlock',
+    bg: 'bgCodeBlock',
     color: 'code',
     overflowY: 'scroll',
 

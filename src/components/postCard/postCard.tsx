@@ -54,7 +54,7 @@ const card = css({
 });
 
 const cardBody = css({
-  color: 'white',
+  color: 'cardText',
   p: '1.25rem',
   display: 'flex',
   justifyContent: 'space-between',

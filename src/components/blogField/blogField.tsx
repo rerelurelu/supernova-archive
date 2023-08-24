@@ -52,7 +52,7 @@ const sectionTitle = css({
   fontSize: { base: '1.25rem', md: '1.875rem' },
   lineHeight: { base: '1.75rem', md: '2.25rem' },
   textAlign: 'left',
-  color: 'white',
+  color: 'contentsTitle',
 });
 
 const postCardsContainer = css({

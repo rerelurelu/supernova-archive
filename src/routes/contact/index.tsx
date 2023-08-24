@@ -4,6 +4,7 @@ import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$, z } from '@builder.io/qwik-city';
 import type { InitialValues } from '@modular-forms/qwik';
 import { reset, useForm, zodForm$ } from '@modular-forms/qwik';
+import ContentsTitle from '~/components/contentsTitle/contentsTitle';
 import { Toaster, toast } from '~/components/toast';
 import { OG_IMAGE } from '~/const/seo';
 import { css } from '~/styled-system/css';
@@ -85,9 +86,7 @@ export default component$(() => {
   return (
     <>
       <Toaster position={'top-center'} duration={7000} closeButton />
-      <header class={header}>
-        <h1 class={pageTitle}>Contact</h1>
-      </header>
+      <ContentsTitle title={'Contact'} />
       <Form onSubmit$={handleSubmit}>
         <div class={formContainer}>
           <div class={fieldContainer}>
@@ -198,19 +197,6 @@ export const head: DocumentHead = {
   ],
 };
 
-const header = css({
-  m: { base: '8rem auto 0', md: '10rem auto 0' },
-});
-
-const pageTitle = css({
-  color: 'white',
-  fontSize: '2.25rem',
-  lineHeight: '2.5rem',
-  textAlign: 'center',
-  fontWeight: '400',
-  letterSpacing: '0.1em',
-});
-
 const formContainer = css({
   mt: '4rem',
   w: '100%',
@@ -247,7 +233,7 @@ const input = css({
   px: '1rem',
   fontSize: '1.125rem',
   lineHeight: '1.75rem',
-  border: '1px solid token(colors.inputBorder)',
+  border: '2px solid token(colors.inputBorder)',
   flexShrink: '1',
   borderRadius: '0.5rem',
   bg: 'bgBase',
@@ -257,7 +243,7 @@ const input = css({
   },
   _focus: {
     borderColor: 'focusInputBorder',
-    outline: '2px solid token(colors.focusInputOutline)',
+    outline: '3px solid token(colors.focusInputOutline)',
     outlineOffset: '2px',
   },
 });
@@ -268,7 +254,7 @@ const textarea = css({
   p: '0.5rem 1rem',
   fontSize: '1.125rem',
   lineHeight: '1.75rem',
-  border: '1px solid token(colors.inputBorder)',
+  border: '2px solid token(colors.inputBorder)',
   flexShrink: 1,
   borderRadius: '0.5rem',
   bg: 'bgBase',
@@ -278,7 +264,7 @@ const textarea = css({
   },
   _focus: {
     borderColor: 'focusInputBorder',
-    outline: '2px solid token(colors.focusInputOutline)',
+    outline: '3px solid token(colors.focusInputOutline)',
     outlineOffset: '2px',
   },
 });
@@ -292,6 +278,7 @@ const button = css({
   fontWeight: '400',
   fontSize: '1.125rem',
   lineHeight: '1.75rem',
+  color: 'contentsTitle',
   w: '70%',
   maxW: '24rem',
   mt: '2.5rem',
@@ -301,7 +288,6 @@ const button = css({
   cursor: 'pointer',
   userSelect: 'none',
   textAlign: 'center',
-  borderColor: 'btnBorder',
   transitionDuration: '.2s',
   transitionTimingFunction: 'cubic-bezier(.4,0,.2,1)',
   borderRadius: '0.5rem',
@@ -310,7 +296,6 @@ const button = css({
   px: '1rem',
   textTransform: 'uppercase',
   textDecorationLine: 'none',
-  borderWidth: '1px',
   alignItems: 'center',
   justifyContent: 'center',
   _disabled: {
