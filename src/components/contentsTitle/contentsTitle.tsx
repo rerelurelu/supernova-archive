@@ -1,13 +1,16 @@
-import { Slot, component$ } from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
 import { css } from '~/styled-system/css';
 
-export default component$(() => {
+type Props = {
+  title: string;
+};
+
+export default component$(({ title }: Props) => {
   return (
     <>
       <header class={header}>
-        <h1 class={contentsTitle}>Blog</h1>
+        <h1 class={contentsTitle}>{title}</h1>
       </header>
-      <Slot />
     </>
   );
 });
@@ -17,7 +20,7 @@ const header = css({
 });
 
 const contentsTitle = css({
-  color: 'white',
+  color: 'contentsTitle',
   textAlign: 'center',
   fontSize: '2.25rem',
   lineHeight: '2.5rem',

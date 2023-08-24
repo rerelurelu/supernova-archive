@@ -10,10 +10,9 @@ export default component$(() => {
 });
 
 const footer = css({
-  borderTop: '1px solid #312e81',
+  borderTop: '1px solid token(colors.footerBorder)',
   py: '3rem',
   bg: 'bgBase',
   letterSpacing: 'widest',
-  color: '#bdc6e9',
   textAlign: 'center',
 });

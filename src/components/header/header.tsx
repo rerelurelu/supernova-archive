@@ -72,14 +72,14 @@ const gradationRecipe = cva({
     textTransform: 'capitalize',
     letterSpacing: '0.1em',
     fontSmoothing: 'antialiased',
-    bg: { _hover: 'linear-gradient(to bottom, #00f1f9, #cb33f4)' },
+    bg: { _hover: 'activePage' },
     backgroundClip: { _hover: 'text' },
     WebkitTextFillColor: { _hover: 'transparent' },
   },
   variants: {
     visual: {
       active: {
-        bg: 'linear-gradient(to bottom, #00f1f9, #cb33f4)',
+        bg: 'activePage',
         backgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
       },

@@ -79,7 +79,7 @@ const indexContainer = css({
 });
 
 const pageIndex = css({
-  border: '2px solid #c4b5fd',
+  border: '2px solid token(colors.paginationBorder)',
   borderRadius: '50%',
   display: 'block',
   w: '100%',
@@ -101,7 +101,7 @@ const icon = css({
   w: '24px',
   h: '40px',
   lineHeight: '36px',
-  color: '#c4b5fd',
+  color: 'paginationIcon',
   _hover: {
     opacity: '0.7',
   },

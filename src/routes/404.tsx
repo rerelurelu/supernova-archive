@@ -13,7 +13,7 @@ export default component$(() => {
           class={divider({
             orientation: 'vertical',
             thickness: '0.125rem',
-            color: '#334155',
+            color: 'divider',
             h: '3.5rem',
             mx: '1.5rem',
           })}

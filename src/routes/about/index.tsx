@@ -29,7 +29,6 @@ export default component$(() => {
               src={'/icons/github-logo.svg'}
               width={iconSize}
               height={iconSize}
-              class={icon}
               alt={`Link to GitHub`}
             />
           </Link>
@@ -40,7 +39,6 @@ export default component$(() => {
               src={'/icons/zenn-logo.svg'}
               width={iconSize}
               height={iconSize}
-              class={icon}
               alt={`Link to Zenn`}
             />
           </Link>
@@ -121,10 +119,6 @@ const snsLink = css({
   _hover: {
     opacity: '0.7',
   },
-});
-
-const icon = css({
-  fill: '#3b82f6',
 });
 
 const introContainer = css({

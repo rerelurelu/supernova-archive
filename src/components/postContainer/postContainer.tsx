@@ -21,7 +21,7 @@ const postContainer = css({
     mb: '0.5rem',
     py: '0.5rem',
     fontWeight: '600',
-    borderBottom: '0.0625rem solid #b2ebf24d',
+    borderBottom: '0.0625rem solid token(colors.divider)',
   },
 
   '& h1': {
@@ -63,7 +63,7 @@ const postContainer = css({
   },
 
   '& a': {
-    color: '#e879f9',
+    color: 'link',
     mx: '1px',
     textDecoration: 'underline',
   },
@@ -93,7 +93,7 @@ const postContainer = css({
     my: '2rem',
     h: '1px',
     border: 'none',
-    bg: '#b2ebf24d',
+    bg: 'divider',
   },
 
   '& p': {
@@ -106,8 +106,8 @@ const postContainer = css({
       mx: '0.25rem',
       borderRadius: '0.25rem',
       fontSmoothing: 'antialiased',
-      bg: '#2b3047',
-      color: '#f2f4ffcc',
+      bg: 'bgCodeBlock',
+      color: 'code',
     },
   },
 
@@ -115,8 +115,8 @@ const postContainer = css({
     my: '3rem',
     p: '1rem',
     borderRadius: '0.5rem',
-    bg: '#2b3047',
-    color: '#f2f4ffcc',
+    bg: 'bgCodeBlock',
+    color: 'code',
     overflowY: 'scroll',
 
     '& code': {

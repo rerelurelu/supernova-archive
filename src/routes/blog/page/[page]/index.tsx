@@ -3,6 +3,7 @@ import type { DocumentHead } from '@builder.io/qwik-city';
 import { routeLoader$, useLocation } from '@builder.io/qwik-city';
 import { getPostList } from '~/api/client';
 import BlogField from '~/components/blogField/blogField';
+import ContentsTitle from '~/components/contentsTitle/contentsTitle';
 import Pagination from '~/components/pagination/pagination';
 import { OG_IMAGE } from '~/const/seo';
 import { PER_PAGE } from '~/utils/constants';
@@ -21,6 +22,7 @@ export default component$(() => {
 
   return (
     <>
+      <ContentsTitle title={'Blog'} />
       <BlogField posts={data.value.posts} />
       <Pagination totalCount={data.value.totalCount} currentIndex={Number(currentIndex)} />
     </>

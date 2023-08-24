@@ -27,5 +27,5 @@ const imageContainer = css({
   h: '12rem',
   borderRadius: '9999px',
   overflow: 'hidden',
-  boxShadow: '0 0 0 3px #999eef',
+  boxShadow: '0 0 0 3px token(colors.avatar)',
 });

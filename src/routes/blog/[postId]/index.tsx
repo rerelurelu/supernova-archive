@@ -11,8 +11,6 @@ import type { Post } from '~/types';
 import { convertDateDisplay } from '~/utils/convertDateDisplay';
 
 export const usePostLoader = routeLoader$(async ({ params, status }) => {
-  console.log(params);
-
   if (!params.postId) {
     status(404);
   }
@@ -49,7 +47,7 @@ export default component$(() => {
           mt: '5rem',
           orientation: 'horizontal',
           thickness: '0.125rem',
-          color: '#2A2F40',
+          color: 'divider',
         })}
       ></div>
       <div class={postWrapper}>
