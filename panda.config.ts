@@ -23,6 +23,7 @@ export default defineConfig({
       colors: {
         // Text
         main: { value: '#bdc6e9' },
+        postMain: { value: '#939ab5' },
         contentsTitle: { value: '#ffffff' },
         error: { value: '#f87171' },
         code: { value: '#f2f4ffcc' },

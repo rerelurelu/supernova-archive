@@ -149,7 +149,6 @@ const infoContainer = css({
 
 const infoText = css({
   fontWeight: '600',
-  opacity: '0.6',
 });
 
 const postWrapper = css({

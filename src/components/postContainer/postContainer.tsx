@@ -84,8 +84,8 @@ const postContainer = css({
 
     '& li': {
       mx: '0',
-      opacity: '0.7',
       fontSize: '1rem',
+      color: 'postMain',
     },
   },
 
@@ -98,8 +98,8 @@ const postContainer = css({
 
   '& p': {
     mb: '2rem',
-    opacity: '0.7',
     fontSize: '1rem',
+    color: 'postMain',
 
     '& code': {
       p: '0.25rem 0.5rem',
