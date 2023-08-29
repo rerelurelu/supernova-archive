@@ -59,6 +59,7 @@ const mainContainer = css({
   w: '100%',
   h: '70vh',
   pt: { base: '8rem', md: '16rem' },
+  color: '#fde047',
 });
 
 const letter = css({

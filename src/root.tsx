@@ -4,6 +4,7 @@ import { RouterHead } from './components/router-head/router-head';
 
 import '@fontsource/overpass/400.css';
 import '@fontsource/overpass/600.css';
+import { css } from '~/styled-system/css';
 import './global.css';
 
 export default component$(() => {
@@ -22,7 +23,7 @@ export default component$(() => {
         <RouterHead />
         <ServiceWorkerRegister />
       </head>
-      <body lang='ja'>
+      <body lang='ja' class={css({ bg: '#fde047' })}>
         <RouterOutlet />
       </body>
     </QwikCityProvider>
