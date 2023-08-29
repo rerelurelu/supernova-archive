@@ -36,7 +36,7 @@ export const head: DocumentHead = {
   meta: [
     {
       name: 'description',
-      content: `relu's blog`,
+      content: `relu's blog list.`,
     },
     {
       name: 'type',
