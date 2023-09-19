@@ -41,6 +41,13 @@ lerna-debug.log*
 # Yarn
 .yarn/*
 !.yarn/releases
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Cloudflare
 functions/**/*.js
