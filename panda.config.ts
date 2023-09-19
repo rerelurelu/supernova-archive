@@ -8,6 +8,7 @@ const globalCss = defineGlobalStyles({
 });
 
 export default defineConfig({
+  jsxFramework: 'qwik',
   // Whether to use css reset
   preflight: true,
 
@@ -62,7 +63,7 @@ export default defineConfig({
   },
 
   // The output directory for your css system
-  outdir: 'styled-system',
+  outdir: 'src/styled-system',
 
   // Global styles
   globalCss,

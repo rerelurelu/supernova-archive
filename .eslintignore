@@ -35,3 +35,7 @@ package-lock.json
 yarn.lock
 server
 postcss.config.cjs
+
+# Panda CSS
+src/styled-system
+panda.config.ts

@@ -54,3 +54,6 @@ functions/**/*.js
 
 # Bundle analizer
 stats.html
+
+# Panda CSS
+src/styled-system

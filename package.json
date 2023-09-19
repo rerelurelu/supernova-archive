@@ -17,6 +17,7 @@
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
+    "prebuild.pandacss": "panda codegen --silent",
     "prepare": "panda codegen",
     "preview": "qwik build preview && vite preview --open",
     "serve": "wrangler pages dev ./dist",
@@ -30,7 +31,8 @@
   "devDependencies": {
     "@builder.io/qwik": "^1.2.7",
     "@builder.io/qwik-city": "^1.2.7",
-    "@pandacss/dev": "^0.8.0",
+    "@builder.io/vite-plugin-macro": "~0.0.7",
+    "@pandacss/dev": "^0.14.0",
     "@types/eslint": "8.40.2",
     "@types/node": "20.6.2",
     "@typescript-eslint/eslint-plugin": "5.61.0",
