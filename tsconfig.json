@@ -20,7 +20,7 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
-      "~/styled-system/*": ["./styled-system/*"]
+      "~/styled-system/*": ["./src/styled-system/*"]
     }
   },
   "files": ["./.eslintrc.cjs"],
