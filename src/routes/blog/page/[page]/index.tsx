@@ -1,7 +1,4 @@
-import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import { routeLoader$, useLocation } from '@builder.io/qwik-city';
-import { getPostList } from '~/api/client';
+import { fetchPosts } from '~/api/client';
 import BlogField from '~/components/blogField/blogField';
 import ContentsTitle from '~/components/contentsTitle/contentsTitle';
 import Pagination from '~/components/pagination/pagination';
@@ -9,9 +6,13 @@ import { OG_IMAGE } from '~/const/seo';
 import { PER_PAGE } from '~/utils/constants';
 import { getCurrentIndex } from '~/utils/getCurrentIndex';
 
+import { component$ } from '@builder.io/qwik';
+import { routeLoader$, useLocation } from '@builder.io/qwik-city';
+
+import type { DocumentHead } from '@builder.io/qwik-city';
 export const usePostsLoader = routeLoader$(async ({ params }) => {
   const offset = (Number(params.page) - 1) * PER_PAGE;
-  const { posts, totalCount } = await getPostList({ limit: PER_PAGE, offset: offset });
+  const { posts, totalCount } = await fetchPosts({ limit: PER_PAGE, offset: offset });
   return { posts, totalCount };
 });
 

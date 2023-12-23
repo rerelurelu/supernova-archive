@@ -1,17 +1,18 @@
-import { component$ } from '@builder.io/qwik';
-import type { DocumentHead, Loader } from '@builder.io/qwik-city';
-import { routeLoader$, useLocation } from '@builder.io/qwik-city';
-import { getPostList } from '~/api/client';
-import BlogField from '~/components/blogField/blogField';
-import ContentsTitle from '~/components/contentsTitle/contentsTitle';
-import Pagination from '~/components/pagination/pagination';
-import { OG_IMAGE } from '~/const/seo';
-import type { PostsData } from '~/types';
-import { PER_PAGE } from '~/utils/constants';
-import { getCurrentIndex } from '~/utils/getCurrentIndex';
+import { fetchPosts } from '~/api/client'
+import BlogField from '~/components/blogField/blogField'
+import ContentsTitle from '~/components/contentsTitle/contentsTitle'
+import Pagination from '~/components/pagination/pagination'
+import { OG_IMAGE } from '~/const/seo'
+import { PER_PAGE } from '~/utils/constants'
+import { getCurrentIndex } from '~/utils/getCurrentIndex'
 
+import { component$ } from '@builder.io/qwik'
+import { routeLoader$, useLocation } from '@builder.io/qwik-city'
+
+import type { DocumentHead, Loader } from '@builder.io/qwik-city';
+import type { PostsData } from '~/types';
 export const usePostsLoader: Loader<PostsData> = routeLoader$(async () => {
-  const { posts, totalCount } = await getPostList({ limit: PER_PAGE, offset: 0 });
+  const { posts, totalCount } = await fetchPosts({ limit: PER_PAGE, offset: 0 });
   return { posts, totalCount };
 });
 
