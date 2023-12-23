@@ -1,15 +1,17 @@
-import { component$ } from '@builder.io/qwik';
-import type { DocumentHead, Loader } from '@builder.io/qwik-city';
-import { routeLoader$ } from '@builder.io/qwik-city';
-import { getPostList } from '~/api/client';
+import { fetchPosts } from '~/api/client';
 import BlogField from '~/components/blogField/blogField';
 import Hero from '~/components/hero/hero';
 import { OG_IMAGE } from '~/const/seo';
 import { css } from '~/styled-system/css';
+
+import { component$ } from '@builder.io/qwik';
+import { routeLoader$ } from '@builder.io/qwik-city';
+
+import type { DocumentHead, Loader } from '@builder.io/qwik-city';
 import type { PostsData } from '~/types';
 
 export const useRecentPostsLoader: Loader<PostsData> = routeLoader$(async () => {
-  const { posts, totalCount } = await getPostList();
+  const { posts, totalCount } = await fetchPosts();
   return { posts, totalCount };
 });
 
