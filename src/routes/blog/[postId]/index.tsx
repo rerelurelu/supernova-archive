@@ -1,22 +1,23 @@
-import { component$ } from '@builder.io/qwik';
-import type { DocumentHead, StaticGenerateHandler } from '@builder.io/qwik-city';
-import { routeLoader$ } from '@builder.io/qwik-city';
-import { getPostDetail, getPostList } from '~/api/client';
-import PostContainer from '~/components/postContainer/postContainer';
-import { OG_IMAGE } from '~/const/seo';
-import { textSm } from '~/style/style';
-import { css } from '~/styled-system/css';
-import { divider } from '~/styled-system/patterns';
-import type { Post } from '~/types';
-import { convertDateDisplay } from '~/utils/convertDateDisplay';
+import { fetchPost, fetchPosts } from '~/api/client'
+import PostContainer from '~/components/postContainer/postContainer'
+import { OG_IMAGE } from '~/const/seo'
+import { textSm } from '~/style/style'
+import { css } from '~/styled-system/css'
+import { divider } from '~/styled-system/patterns'
+import { convertDateDisplay } from '~/utils/convertDateDisplay'
 
+import { component$ } from '@builder.io/qwik'
+import { routeLoader$ } from '@builder.io/qwik-city'
+
+import type { DocumentHead, StaticGenerateHandler } from '@builder.io/qwik-city';
+import type { Post } from '~/types';
 export const usePostLoader = routeLoader$(async ({ params, status }) => {
   if (!params.postId) {
     status(404);
   }
 
   try {
-    const post = await getPostDetail(params.postId);
+    const post = await fetchPost(params.postId);
     return post;
   } catch {
     status(404);
@@ -58,7 +59,7 @@ export default component$(() => {
 });
 
 export const onStaticGenerate: StaticGenerateHandler = async () => {
-  const data = await getPostList();
+  const data = await fetchPosts();
 
   const paths = data.posts.map((post) => {
     return post.id;
