@@ -1,13 +1,12 @@
-import { fetchPost, fetchPosts } from '~/api/client'
-import PostContainer from '~/components/postContainer/postContainer'
-import { OG_IMAGE } from '~/const/seo'
-import { textSm } from '~/style/style'
-import { css } from '~/styled-system/css'
-import { divider } from '~/styled-system/patterns'
-import { convertDateDisplay } from '~/utils/convertDateDisplay'
+import { fetchPost, fetchPosts } from '~/api/client';
+import PostContainer from '~/components/postContainer/postContainer';
+import { OG_IMAGE } from '~/const/seo';
+import { textSm } from '~/style/style';
+import { css } from '~/styled-system/css';
+import { divider } from '~/styled-system/patterns';
 
-import { component$ } from '@builder.io/qwik'
-import { routeLoader$ } from '@builder.io/qwik-city'
+import { component$ } from '@builder.io/qwik';
+import { routeLoader$ } from '@builder.io/qwik-city';
 
 import type { DocumentHead, StaticGenerateHandler } from '@builder.io/qwik-city';
 import type { Post } from '~/types';
@@ -31,7 +30,11 @@ export default component$(() => {
     return <></>;
   }
 
-  const dateDisplay = convertDateDisplay(post.value.publishedAt.slice(0, 10));
+  const dateDisplay = new Date(post.value.publishedAt).toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 
   return (
     <article class={wrapper}>

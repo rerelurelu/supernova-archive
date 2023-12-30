@@ -1,10 +1,10 @@
-import { component$ } from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
 import { textSm } from '~/style/style';
 import { css } from '~/styled-system/css';
-import type { tag } from '~/types';
-import { convertDateDisplay } from '~/utils/convertDateDisplay';
 
+import { component$ } from '@builder.io/qwik';
+import { Link } from '@builder.io/qwik-city';
+
+import type { tag } from '~/types';
 type Props = {
   title: string;
   href: string;
@@ -13,7 +13,11 @@ type Props = {
 };
 
 export default component$(({ title, href, createdAt, tags }: Props) => {
-  const dateDisplay = convertDateDisplay(createdAt.slice(0, 10));
+  const dateDisplay = new Date(createdAt).toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 
   return (
     <article class={card}>
