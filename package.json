@@ -56,6 +56,7 @@
     "@modular-forms/qwik": "^0.20.1",
     "@qwikest/icons": "^0.0.8",
     "@unpic/qwik": "^0.0.25",
-    "microcms-js-sdk": "^2.5.0"
+    "microcms-js-sdk": "^2.5.0",
+    "qwik-sonner": "^0.2.2"
   }
 }
