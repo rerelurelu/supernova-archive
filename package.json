@@ -58,6 +58,5 @@
     "@unpic/qwik": "^0.0.25",
     "microcms-js-sdk": "^2.5.0",
     "qwik-sonner": "^0.2.2"
-  },
-  "packageManager": "pnpm@8.7.5"
+  }
 }
