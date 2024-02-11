@@ -5,9 +5,9 @@ import { routeLoader$, z } from '@builder.io/qwik-city';
 import type { InitialValues } from '@modular-forms/qwik';
 import { reset, useForm, zodForm$ } from '@modular-forms/qwik';
 import ContentsTitle from '~/components/contentsTitle/contentsTitle';
-import { Toaster, toast } from '~/components/toast';
 import { OG_IMAGE } from '~/const/seo';
 import { css } from '~/styled-system/css';
+import { Toaster, toast } from 'qwik-sonner';
 
 const sendMessageType = {
   success: 'メッセージの送信に成功しました 🥳',
@@ -85,7 +85,7 @@ export default component$(() => {
 
   return (
     <>
-      <Toaster position={'top-center'} duration={7000} closeButton />
+      <Toaster position={'top-center'} duration={2000} />
       <ContentsTitle title={'Contact'} />
       <Form onSubmit$={handleSubmit}>
         <div class={formContainer}>
