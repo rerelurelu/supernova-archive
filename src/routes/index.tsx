@@ -1,23 +1,23 @@
-import { fetchPosts } from '~/api/client';
-import BlogField from '~/components/blogField/blogField';
-import Hero from '~/components/hero/hero';
-import { OG_IMAGE } from '~/const/seo';
-import { css } from '~/styled-system/css';
+import { fetchPosts } from '~/api/client'
+import BlogField from '~/components/blogField/blogField'
+import Hero from '~/components/hero/hero'
+import { OG_IMAGE } from '~/const/seo'
+import { css } from '~/styled-system/css'
 
-import { component$ } from '@builder.io/qwik';
-import { routeLoader$ } from '@builder.io/qwik-city';
+import { component$ } from '@builder.io/qwik'
+import { routeLoader$ } from '@builder.io/qwik-city'
 
-import type { DocumentHead, Loader } from '@builder.io/qwik-city';
-import type { PostsData } from '~/types';
+import type { DocumentHead, Loader } from '@builder.io/qwik-city'
+import type { PostsData } from '~/types'
 
 export const useRecentPostsLoader: Loader<PostsData> = routeLoader$(async () => {
-  const { posts, totalCount } = await fetchPosts();
-  return { posts, totalCount };
-});
+  const { posts, totalCount } = await fetchPosts()
+  return { posts, totalCount }
+})
 
 export default component$(() => {
-  const data = useRecentPostsLoader();
-  const recentPosts = data.value.posts.slice(0, 3);
+  const data = useRecentPostsLoader()
+  const recentPosts = data.value.posts.slice(0, 3)
 
   return (
     <>
@@ -26,8 +26,8 @@ export default component$(() => {
       </div>
       <BlogField posts={recentPosts} />
     </>
-  );
-});
+  )
+})
 
 export const head: DocumentHead = {
   title: 'relu',
@@ -69,11 +69,11 @@ export const head: DocumentHead = {
       content: OG_IMAGE.HEIGHT,
     },
   ],
-};
+}
 
 const wrapper = css({
   w: '100%',
   h: '100vh',
   display: 'flex',
   justifyContent: 'center',
-});
+})

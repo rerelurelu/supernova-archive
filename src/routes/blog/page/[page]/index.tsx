@@ -1,34 +1,34 @@
-import { fetchPosts } from '~/api/client';
-import BlogField from '~/components/blogField/blogField';
-import ContentsTitle from '~/components/contentsTitle/contentsTitle';
-import Pagination from '~/components/pagination/pagination';
-import { OG_IMAGE } from '~/const/seo';
-import { PER_PAGE } from '~/utils/constants';
-import { getCurrentIndex } from '~/utils/getCurrentIndex';
+import { fetchPosts } from '~/api/client'
+import BlogField from '~/components/blogField/blogField'
+import ContentsTitle from '~/components/contentsTitle/contentsTitle'
+import Pagination from '~/components/pagination/pagination'
+import { OG_IMAGE } from '~/const/seo'
+import { PER_PAGE } from '~/utils/constants'
+import { getCurrentIndex } from '~/utils/getCurrentIndex'
 
-import { component$ } from '@builder.io/qwik';
-import { routeLoader$, useLocation } from '@builder.io/qwik-city';
+import { component$ } from '@builder.io/qwik'
+import { routeLoader$, useLocation } from '@builder.io/qwik-city'
 
-import type { DocumentHead } from '@builder.io/qwik-city';
+import type { DocumentHead } from '@builder.io/qwik-city'
 export const usePostsLoader = routeLoader$(async ({ params }) => {
-  const offset = (Number(params.page) - 1) * PER_PAGE;
-  const { posts, totalCount } = await fetchPosts({ limit: PER_PAGE, offset: offset });
-  return { posts, totalCount };
-});
+  const offset = (Number(params.page) - 1) * PER_PAGE
+  const { posts, totalCount } = await fetchPosts({ limit: PER_PAGE, offset: offset })
+  return { posts, totalCount }
+})
 
 export default component$(() => {
-  const loc = useLocation();
-  const currentIndex = getCurrentIndex(loc.url.pathname);
-  const data = usePostsLoader();
+  const loc = useLocation()
+  const currentIndex = getCurrentIndex(loc.url.pathname)
+  const data = usePostsLoader()
 
   return (
     <>
       <ContentsTitle title={'Blog'} />
       <BlogField posts={data.value.posts} />
-      <Pagination totalCount={data.value.totalCount} currentIndex={Number(currentIndex)} />
+      <Pagination currentIndex={Number(currentIndex)} totalCount={data.value.totalCount} />
     </>
-  );
-});
+  )
+})
 
 export const head: DocumentHead = {
   title: 'Blog | relu',
@@ -70,4 +70,4 @@ export const head: DocumentHead = {
       content: OG_IMAGE.HEIGHT,
     },
   ],
-};
+}

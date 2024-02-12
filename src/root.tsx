@@ -1,11 +1,11 @@
-import { component$ } from '@builder.io/qwik';
-import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city';
-import { RouterHead } from './components/router-head/router-head';
+import { component$ } from '@builder.io/qwik'
+import { QwikCityProvider, RouterOutlet, ServiceWorkerRegister } from '@builder.io/qwik-city'
+import { RouterHead } from './components/router-head/router-head'
 
-import '@fontsource/overpass/400.css';
-import '@fontsource/overpass/600.css';
-import { css } from '~/styled-system/css';
-import './global.css';
+import '@fontsource/overpass/400.css'
+import '@fontsource/overpass/600.css'
+import { css } from '~/styled-system/css'
+import './global.css'
 
 export default component$(() => {
   /**
@@ -19,13 +19,13 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charSet='utf-8' />
-        <link rel='manifest' href='/manifest.json' />
+        <link href='/manifest.json' rel='manifest' />
         <RouterHead />
         <ServiceWorkerRegister />
       </head>
-      <body lang='ja' class={css({ bg: '#fde047' })}>
+      <body class={css({ bg: '#fde047' })} lang='ja'>
         <RouterOutlet />
       </body>
     </QwikCityProvider>
-  );
-});
+  )
+})

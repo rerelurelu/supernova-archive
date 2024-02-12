@@ -1,8 +1,8 @@
-import { component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import { OG_IMAGE } from '~/const/seo';
-import { css } from '~/styled-system/css';
-import { divider } from '~/styled-system/patterns';
+import { component$ } from '@builder.io/qwik'
+import type { DocumentHead } from '@builder.io/qwik-city'
+import { OG_IMAGE } from '~/const/seo'
+import { css } from '~/styled-system/css'
+import { divider } from '~/styled-system/patterns'
 
 export default component$(() => {
   return (
@@ -21,8 +21,8 @@ export default component$(() => {
         <h2 class={info}>This page could not be found.</h2>
       </div>
     </div>
-  );
-});
+  )
+})
 
 export const head: DocumentHead = {
   title: '404 This page could not be found.',
@@ -64,29 +64,29 @@ export const head: DocumentHead = {
       content: OG_IMAGE.HEIGHT,
     },
   ],
-};
+}
 
 const wrapper = css({
   display: 'grid',
   placeItems: 'center',
   h: '70vh',
   px: '3rem',
-});
+})
 
 const container = css({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-});
+})
 
 const title = css({
   color: 'white',
   fontSize: '2.25rem',
   lineHeight: '2.5rem',
-});
+})
 
 const info = css({
   color: 'white',
   fontSize: '1.125rem',
   lineHeight: '1.75rem',
-});
+})

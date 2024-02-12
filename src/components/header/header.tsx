@@ -1,12 +1,12 @@
-import { component$ } from '@builder.io/qwik';
-import { Link, useLocation } from '@builder.io/qwik-city';
-import { ENTRIES } from '~/const/entries';
-import { css, cva } from '~/styled-system/css';
-import { getPathname } from '~/utils/getPathname';
+import { component$ } from '@builder.io/qwik'
+import { Link, useLocation } from '@builder.io/qwik-city'
+import { ENTRIES } from '~/const/entries'
+import { css, cva } from '~/styled-system/css'
+import { getPathname } from '~/utils/getPathname'
 
 export default component$(() => {
-  const loc = useLocation();
-  const pathname = getPathname(loc.url.pathname);
+  const loc = useLocation()
+  const pathname = getPathname(loc.url.pathname)
 
   return (
     <header class={header}>
@@ -14,7 +14,7 @@ export default component$(() => {
         {ENTRIES.map(({ href, content }) => {
           return (
             <li key={content}>
-              <Link href={href} id={content} class={link}>
+              <Link class={link} href={href} id={content}>
                 <span
                   class={gradationRecipe(content === pathname ? { visual: 'active' } : undefined)}
                 >
@@ -22,12 +22,12 @@ export default component$(() => {
                 </span>
               </Link>
             </li>
-          );
+          )
         })}
       </ul>
     </header>
-  );
-});
+  )
+})
 
 const header = css({
   w: '100%',
@@ -44,7 +44,7 @@ const header = css({
   bg: 'bgHeader',
   pos: 'fixed',
   backdropFilter: 'blur(8px)',
-});
+})
 
 const ul = css({
   w: 'max-content',
@@ -54,7 +54,7 @@ const ul = css({
   listStyle: 'none',
   m: '0',
   p: '0',
-});
+})
 
 const link = css({
   bg: { _hover: 'transparent', _focus: 'transparent' },
@@ -63,7 +63,7 @@ const link = css({
   color: { base: 'white' },
   alignItems: 'center',
   userSelect: 'none',
-});
+})
 
 const gradationRecipe = cva({
   base: {
@@ -85,4 +85,4 @@ const gradationRecipe = cva({
       },
     },
   },
-});
+})

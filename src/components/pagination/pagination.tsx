@@ -1,33 +1,33 @@
-import { $, component$, useOnWindow, useStore, useVisibleTask$ } from '@builder.io/qwik';
-import { Link } from '@builder.io/qwik-city';
-import { HiChevronLeftSolid, HiChevronRightSolid } from '@qwikest/icons/heroicons';
-import { css } from '~/styled-system/css';
-import { PER_PAGE } from '~/utils/constants';
-import { getPagination } from '~/utils/getPagination';
+import { $, component$, useOnWindow, useStore, useVisibleTask$ } from '@builder.io/qwik'
+import { Link } from '@builder.io/qwik-city'
+import { HiChevronLeftSolid, HiChevronRightSolid } from '@qwikest/icons/heroicons'
+import { css } from '~/styled-system/css'
+import { PER_PAGE } from '~/utils/constants'
+import { getPagination } from '~/utils/getPagination'
 
 type Props = {
-  totalCount: number;
-  currentIndex: number;
-};
+  totalCount: number
+  currentIndex: number
+}
 
 export default component$(({ totalCount, currentIndex }: Props) => {
-  const store = useStore({ width: 0 });
-  const maxIndex = Math.ceil(totalCount / PER_PAGE);
-  const rootUrl = '/blog';
+  const store = useStore({ width: 0 })
+  const maxIndex = Math.ceil(totalCount / PER_PAGE)
+  const rootUrl = '/blog'
 
   useVisibleTask$(() => {
-    store.width = window.innerWidth;
-  });
+    store.width = window.innerWidth
+  })
 
   useOnWindow(
     'resize',
     $(() => {
-      store.width = window.innerWidth;
+      store.width = window.innerWidth
     }),
-  );
+  )
 
-  const isLaptop = store.width >= 1024;
-  const pagination = getPagination(maxIndex, currentIndex, isLaptop);
+  const isLaptop = store.width >= 1024
+  const pagination = getPagination(maxIndex, currentIndex, isLaptop)
 
   return (
     <div class={wrapper}>
@@ -39,11 +39,11 @@ export default component$(({ totalCount, currentIndex }: Props) => {
         </Link>
       )}
       {pagination.map((number, index) => (
-        <li key={index} class={indexContainer}>
+        <li class={indexContainer} key={index}>
           {currentIndex === number ? (
             <span>{number}</span>
           ) : (
-            <Link href={number === 1 ? rootUrl : `/blog/page/${number}`} class={pageIndex}>
+            <Link class={pageIndex} href={number === 1 ? rootUrl : `/blog/page/${number}`}>
               {number}
             </Link>
           )}
@@ -57,8 +57,8 @@ export default component$(({ totalCount, currentIndex }: Props) => {
         </Link>
       )}
     </div>
-  );
-});
+  )
+})
 
 const wrapper = css({
   mt: { base: '4rem', md: '6rem' },
@@ -67,7 +67,7 @@ const wrapper = css({
   alignItems: 'center',
   flexWrap: 'wrap',
   gap: '0.75rem',
-});
+})
 
 const indexContainer = css({
   w: '40px',
@@ -76,7 +76,7 @@ const indexContainer = css({
   display: 'grid',
   placeItems: 'center',
   textAlign: 'center',
-});
+})
 
 const pageIndex = css({
   border: '2px solid token(colors.paginationBorder)',
@@ -86,7 +86,7 @@ const pageIndex = css({
   _hover: {
     opacity: '0.7',
   },
-});
+})
 
 const iconContainer = css({
   w: '24px',
@@ -95,7 +95,7 @@ const iconContainer = css({
   display: 'grid',
   placeItems: 'center',
   textAlign: 'center',
-});
+})
 
 const icon = css({
   w: '24px',
@@ -105,4 +105,4 @@ const icon = css({
   _hover: {
     opacity: '0.7',
   },
-});
+})

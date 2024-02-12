@@ -1,5 +1,5 @@
-import { describe, expect, test } from 'vitest';
-import { getPathname } from './getPathname';
+import { describe, expect, test } from 'vitest'
+import { getPathname } from './getPathname'
 
 describe('現在開いているページのパス（ディレクトリ名）を取得できるか', () => {
   const paths = {
@@ -10,33 +10,33 @@ describe('現在開いているページのパス（ディレクトリ名）を�
     about: '/about/',
     contact: '/contact/',
     noMatch: 'noMatch',
-  };
+  }
 
   test('開いているページがHomeの場合', () => {
-    expect(getPathname(paths.home)).toBe('home');
-  });
+    expect(getPathname(paths.home)).toBe('home')
+  })
 
   test('開いているページがBlog一覧の場合', () => {
-    expect(getPathname(paths.blogList)).toBe('blog');
-  });
+    expect(getPathname(paths.blogList)).toBe('blog')
+  })
 
   test('開いているページがBlog一覧かつページインデックスが2以上の場合', () => {
-    expect(getPathname(paths.blogList)).toBe('blog');
-  });
+    expect(getPathname(paths.blogList)).toBe('blog')
+  })
 
   test('開いているページがBlog詳細の場合', () => {
-    expect(getPathname(paths.blogDetail)).toBe('blog');
-  });
+    expect(getPathname(paths.blogDetail)).toBe('blog')
+  })
 
   test('開いているページがAboutの場合', () => {
-    expect(getPathname(paths.about)).toBe('about');
-  });
+    expect(getPathname(paths.about)).toBe('about')
+  })
 
   test('開いているページがContactの場合', () => {
-    expect(getPathname(paths.contact)).toBe('contact');
-  });
+    expect(getPathname(paths.contact)).toBe('contact')
+  })
 
   test('正規表現でマッチしなかった場合', () => {
-    expect(getPathname(paths.noMatch)).toBe('');
-  });
-});
+    expect(getPathname(paths.noMatch)).toBe('')
+  })
+})
