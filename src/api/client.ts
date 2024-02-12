@@ -1,5 +1,5 @@
 import type { MicroCMSQueries } from 'microcms-js-sdk';
-import { createClient } from 'microcms-js-sdk'
+import { createClient } from 'microcms-js-sdk';
 
 import type { Post, PostsData } from '~/types';
 

@@ -20,26 +20,26 @@ const intro = {
 export default component$(() => {
   return (
     <div class={container}>
-      <Avatar width={512} height={512} />
+      <Avatar height={512} width={512} />
       <span class={myName}>relu</span>
       <ul class={iconContainer}>
         <li>
-          <Link href={sns.github.href} target='_blank' class={snsLink}>
+          <Link class={snsLink} href={sns.github.href} target='_blank'>
             <Image
+              alt={`Link to GitHub`}
+              height={iconSize}
               src={'/icons/github-logo.svg'}
               width={iconSize}
-              height={iconSize}
-              alt={`Link to GitHub`}
             />
           </Link>
         </li>
         <li>
-          <Link href={sns.zenn.href} target='_blank' class={snsLink}>
+          <Link class={snsLink} href={sns.zenn.href} target='_blank'>
             <Image
+              alt={`Link to Zenn`}
+              height={iconSize}
               src={'/icons/zenn-logo.svg'}
               width={iconSize}
-              height={iconSize}
-              alt={`Link to Zenn`}
             />
           </Link>
         </li>

@@ -11,7 +11,7 @@ export default component$(({ width, height }: Props) => {
   return (
     <div class={avatar}>
       <div class={imageContainer}>
-        <Image src={'/avatar.png'} width={width} height={height} alt={`relu's avatar image`} />
+        <Image alt={`relu's avatar image`} height={height} src={'/avatar.png'} width={width} />
       </div>
     </div>
   );

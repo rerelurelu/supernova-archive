@@ -85,7 +85,7 @@ export default component$(() => {
 
   return (
     <>
-      <Toaster position={'top-center'} duration={2000} />
+      <Toaster duration={2000} position={'top-center'} />
       <ContentsTitle title={'Contact'} />
       <Form onSubmit$={handleSubmit}>
         <div class={formContainer}>
@@ -98,10 +98,10 @@ export default component$(() => {
                 <>
                   <input
                     {...props}
+                    class={input}
+                    placeholder={inputContentType.name.placeholder}
                     type='text'
                     value={field.value}
-                    placeholder={inputContentType.name.placeholder}
-                    class={input}
                   />
                   {field.error && <p class={errorText}>{field.error}</p>}
                 </>
@@ -117,10 +117,10 @@ export default component$(() => {
                 <>
                   <input
                     {...props}
+                    class={input}
+                    placeholder={inputContentType.email.placeholder}
                     type='email'
                     value={field.value}
-                    placeholder={inputContentType.email.placeholder}
-                    class={input}
                   />
                   {field.error && <p class={errorText}>{field.error}</p>}
                 </>
@@ -136,17 +136,17 @@ export default component$(() => {
                 <>
                   <textarea
                     {...props}
-                    value={field.value}
-                    placeholder={inputContentType.message.placeholder}
                     class={textarea}
+                    placeholder={inputContentType.message.placeholder}
                     rows={10}
+                    value={field.value}
                   />
                   {field.error && <p class={errorText}>{field.error}</p>}
                 </>
               )}
             </Field>
           </div>
-          <button type='submit' class={button} disabled={contactForm.submitting}>
+          <button class={button} disabled={contactForm.submitting} type='submit'>
             {contactForm.submitting ? 'SENDING...' : 'SEND'}
           </button>
         </div>

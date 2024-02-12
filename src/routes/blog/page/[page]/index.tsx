@@ -25,7 +25,7 @@ export default component$(() => {
     <>
       <ContentsTitle title={'Blog'} />
       <BlogField posts={data.value.posts} />
-      <Pagination totalCount={data.value.totalCount} currentIndex={Number(currentIndex)} />
+      <Pagination currentIndex={Number(currentIndex)} totalCount={data.value.totalCount} />
     </>
   );
 });

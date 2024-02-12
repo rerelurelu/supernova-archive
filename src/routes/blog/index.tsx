@@ -27,7 +27,7 @@ export default component$(() => {
     <>
       <ContentsTitle title={'Blog'} />
       <BlogField posts={data.value.posts} />
-      {needPagination && <Pagination totalCount={totalCount} currentIndex={Number(currentIndex)} />}
+      {needPagination && <Pagination currentIndex={Number(currentIndex)} totalCount={totalCount} />}
     </>
   );
 });

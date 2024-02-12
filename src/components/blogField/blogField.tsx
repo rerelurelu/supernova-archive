@@ -21,17 +21,17 @@ export default component$(({ posts }: Props) => {
         {posts.map((post) => {
           return (
             <PostCard
-              key={post.id}
-              title={post.title}
-              href={`/blog/${post.id}`}
               createdAt={post.publishedAt.slice(0, 10)}
+              href={`/blog/${post.id}`}
+              key={post.id}
               tags={post.tags.map((tag) => tag)}
+              title={post.title}
             />
           );
         })}
       </div>
       {isHome && (
-        <Link href={'/blog'} class={[link, textSm]}>
+        <Link class={[link, textSm]} href={'/blog'}>
           All Posts →
         </Link>
       )}

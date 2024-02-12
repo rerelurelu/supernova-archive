@@ -14,7 +14,7 @@ export default component$(() => {
         {ENTRIES.map(({ href, content }) => {
           return (
             <li key={content}>
-              <Link href={href} id={content} class={link}>
+              <Link class={link} href={href} id={content}>
                 <span
                   class={gradationRecipe(content === pathname ? { visual: 'active' } : undefined)}
                 >

@@ -24,18 +24,18 @@ export default component$(({ title, href, createdAt, tags }: Props) => {
       <div class={cardBody}>
         <header class={cardHeader}>
           <h2 class={cardTitle}>
-            <Link href={href} class={link}>
+            <Link class={link} href={href}>
               {title}
             </Link>
           </h2>
         </header>
         <div class={timeContainer}>
-          <time dateTime={createdAt} class={textSm}>
+          <time class={textSm} dateTime={createdAt}>
             {dateDisplay}
           </time>
           <div class={tagContainer}>
             {tags.map((tag) => (
-              <div key={tag.id} class={css({ color: 'tagName' })}>
+              <div class={css({ color: 'tagName' })} key={tag.id}>
                 <span class={[hashTag, textSm]}>#</span>
                 <span>{tag.tagName}</span>
               </div>

@@ -39,11 +39,11 @@ export default component$(({ totalCount, currentIndex }: Props) => {
         </Link>
       )}
       {pagination.map((number, index) => (
-        <li key={index} class={indexContainer}>
+        <li class={indexContainer} key={index}>
           {currentIndex === number ? (
             <span>{number}</span>
           ) : (
-            <Link href={number === 1 ? rootUrl : `/blog/page/${number}`} class={pageIndex}>
+            <Link class={pageIndex} href={number === 1 ? rootUrl : `/blog/page/${number}`}>
               {number}
             </Link>
           )}
