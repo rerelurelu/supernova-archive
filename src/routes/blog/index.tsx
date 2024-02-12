@@ -9,19 +9,19 @@ import { getCurrentIndex } from '~/utils/getCurrentIndex'
 import { component$ } from '@builder.io/qwik'
 import { routeLoader$, useLocation } from '@builder.io/qwik-city'
 
-import type { DocumentHead, Loader } from '@builder.io/qwik-city';
-import type { PostsData } from '~/types';
+import type { DocumentHead, Loader } from '@builder.io/qwik-city'
+import type { PostsData } from '~/types'
 export const usePostsLoader: Loader<PostsData> = routeLoader$(async () => {
-  const { posts, totalCount } = await fetchPosts({ limit: PER_PAGE, offset: 0 });
-  return { posts, totalCount };
-});
+  const { posts, totalCount } = await fetchPosts({ limit: PER_PAGE, offset: 0 })
+  return { posts, totalCount }
+})
 
 export default component$(() => {
-  const loc = useLocation();
-  const currentIndex = getCurrentIndex(loc.url.pathname);
-  const data = usePostsLoader();
-  const totalCount = data.value.totalCount;
-  const needPagination = totalCount > PER_PAGE;
+  const loc = useLocation()
+  const currentIndex = getCurrentIndex(loc.url.pathname)
+  const data = usePostsLoader()
+  const totalCount = data.value.totalCount
+  const needPagination = totalCount > PER_PAGE
 
   return (
     <>
@@ -29,8 +29,8 @@ export default component$(() => {
       <BlogField posts={data.value.posts} />
       {needPagination && <Pagination currentIndex={Number(currentIndex)} totalCount={totalCount} />}
     </>
-  );
-});
+  )
+})
 
 export const head: DocumentHead = {
   title: 'Blog | relu',
@@ -72,4 +72,4 @@ export const head: DocumentHead = {
       content: OG_IMAGE.HEIGHT,
     },
   ],
-};
+}

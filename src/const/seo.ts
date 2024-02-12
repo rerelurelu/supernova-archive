@@ -1,10 +1,10 @@
 // Type
 type Opengraph = {
-  IMAGE: string;
-  IMAGE_TYPE: string;
-  WIDTH: string;
-  HEIGHT: string;
-};
+  IMAGE: string
+  IMAGE_TYPE: string
+  WIDTH: string
+  HEIGHT: string
+}
 
 export const OG_IMAGE: Opengraph = {
   IMAGE:
@@ -12,4 +12,4 @@ export const OG_IMAGE: Opengraph = {
   IMAGE_TYPE: 'image/png',
   WIDTH: '700',
   HEIGHT: '700',
-};
+}

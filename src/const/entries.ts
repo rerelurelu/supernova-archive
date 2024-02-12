@@ -3,4 +3,4 @@ export const ENTRIES = [
   { href: '/blog', content: 'blog' },
   { href: '/about', content: 'about' },
   { href: '/contact', content: 'contact' },
-];
+]

@@ -1,24 +1,24 @@
-import type { QRL } from '@builder.io/qwik';
-import { $, component$ } from '@builder.io/qwik';
-import type { DocumentHead } from '@builder.io/qwik-city';
-import { routeLoader$, z } from '@builder.io/qwik-city';
-import type { InitialValues } from '@modular-forms/qwik';
-import { reset, useForm, zodForm$ } from '@modular-forms/qwik';
-import ContentsTitle from '~/components/contentsTitle/contentsTitle';
-import { OG_IMAGE } from '~/const/seo';
-import { css } from '~/styled-system/css';
-import { Toaster, toast } from 'qwik-sonner';
+import type { QRL } from '@builder.io/qwik'
+import { $, component$ } from '@builder.io/qwik'
+import type { DocumentHead } from '@builder.io/qwik-city'
+import { routeLoader$, z } from '@builder.io/qwik-city'
+import type { InitialValues } from '@modular-forms/qwik'
+import { reset, useForm, zodForm$ } from '@modular-forms/qwik'
+import ContentsTitle from '~/components/contentsTitle/contentsTitle'
+import { OG_IMAGE } from '~/const/seo'
+import { css } from '~/styled-system/css'
+import { Toaster, toast } from 'qwik-sonner'
 
 const sendMessageType = {
   success: 'メッセージの送信に成功しました 🥳',
   error: 'メッセージの送信に失敗しました 🥲',
-} as const;
+} as const
 
 const inputContentType = {
   name: { label: 'Name*', placeholder: 'Your Name' },
   email: { label: 'Email*', placeholder: 'Your Email' },
   message: { label: 'Message*', placeholder: 'Message' },
-} as const;
+} as const
 
 const contactSchema = z.object({
   name: z.string().nonempty('名前は入力必須です。'),
@@ -27,32 +27,32 @@ const contactSchema = z.object({
     .nonempty('メールアドレスは入力必須です。')
     .email('メールアドレスを正しく入力してください。'),
   message: z.string().nonempty('メッセージは入力必須です。'),
-});
+})
 
 type ContactForm = {
-  name: string;
-  email: string;
-  message: string;
-  [key: string]: string;
-};
+  name: string
+  email: string
+  message: string
+  [key: string]: string
+}
 
 export const useFormLoader = routeLoader$<InitialValues<ContactForm>>(() => ({
   name: '',
   email: '',
   message: '',
-}));
+}))
 
 export default component$(() => {
   const [contactForm, { Form, Field }] = useForm<ContactForm>({
     loader: useFormLoader(),
     validate: zodForm$(contactSchema),
-  });
+  })
 
   const handleSubmit: QRL<(values: ContactForm) => Promise<void>> = $(async (values) => {
-    const formData = new FormData();
-    formData.append('name', values.name);
-    formData.append('email', values.email);
-    formData.append('message', values.message);
+    const formData = new FormData()
+    formData.append('name', values.name)
+    formData.append('email', values.email)
+    formData.append('message', values.message)
 
     await fetch(import.meta.env.PUBLIC_VITE_FORM_ENDPOINT, {
       method: 'POST',
@@ -67,8 +67,8 @@ export default component$(() => {
             background: '#333',
             color: '#fff',
           },
-        });
-        reset(contactForm, ['name', 'email', 'message']);
+        })
+        reset(contactForm, ['name', 'email', 'message'])
       })
       .catch(() => {
         toast.error(sendMessageType.error, {
@@ -79,9 +79,9 @@ export default component$(() => {
             background: '#333',
             color: '#fff',
           },
-        });
-      });
-  });
+        })
+      })
+  })
 
   return (
     <>
@@ -152,8 +152,8 @@ export default component$(() => {
         </div>
       </Form>
     </>
-  );
-});
+  )
+})
 
 export const head: DocumentHead = {
   title: 'Contact | relu',
@@ -195,7 +195,7 @@ export const head: DocumentHead = {
       content: OG_IMAGE.HEIGHT,
     },
   ],
-};
+}
 
 const formContainer = css({
   mt: '4rem',
@@ -203,14 +203,14 @@ const formContainer = css({
   display: 'grid',
   placeItems: 'center',
   gap: '2.5rem',
-});
+})
 
 const fieldContainer = css({
   w: '100%',
   maxW: '36rem',
   display: 'flex',
   flexDir: 'column',
-});
+})
 
 const label = css({
   display: 'flex',
@@ -218,13 +218,13 @@ const label = css({
   justifyContent: 'space-between',
   p: '0.5rem 0.25rem',
   userSelect: 'none',
-});
+})
 
 const labelText = css({
   fontSize: '1rem',
   lineHeight: '1.5rem',
   fontSmoothing: 'antialiased',
-});
+})
 
 const input = css({
   w: '100%',
@@ -246,7 +246,7 @@ const input = css({
     outline: '3px solid token(colors.focusInputOutline)',
     outlineOffset: '2px',
   },
-});
+})
 
 const textarea = css({
   maxW: '36rem',
@@ -267,12 +267,12 @@ const textarea = css({
     outline: '3px solid token(colors.focusInputOutline)',
     outlineOffset: '2px',
   },
-});
+})
 
 const errorText = css({
   color: 'error',
   mt: '0.75rem',
-});
+})
 
 const button = css({
   fontWeight: '400',
@@ -303,4 +303,4 @@ const button = css({
     opacity: '0.3',
     pointerEvents: 'none',
   },
-});
+})

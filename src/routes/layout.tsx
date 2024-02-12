@@ -1,9 +1,9 @@
-import { component$, Slot } from '@builder.io/qwik';
-import type { RequestHandler } from '@builder.io/qwik-city';
-import { routeLoader$ } from '@builder.io/qwik-city';
-import Footer from '~/components/footer/footer';
-import Header from '~/components/header/header';
-import { css } from '~/styled-system/css';
+import { component$, Slot } from '@builder.io/qwik'
+import type { RequestHandler } from '@builder.io/qwik-city'
+import { routeLoader$ } from '@builder.io/qwik-city'
+import Footer from '~/components/footer/footer'
+import Header from '~/components/header/header'
+import { css } from '~/styled-system/css'
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -13,14 +13,14 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
     staleWhileRevalidate: 60 * 60 * 24 * 7,
     // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
     maxAge: 5,
-  });
-};
+  })
+}
 
 export const useServerTimeLoader = routeLoader$(() => {
   return {
     date: new Date().toISOString(),
-  };
-});
+  }
+})
 
 export default component$(() => {
   return (
@@ -33,16 +33,16 @@ export default component$(() => {
       </main>
       <Footer />
     </>
-  );
-});
+  )
+})
 
 const rootLayout = css({
   minH: '100vh',
   bg: 'bgBase',
-});
+})
 
 const mainContainer = css({
   px: { base: '1.25rem', md: '3rem' },
   pt: '4rem',
   pb: { base: '8rem', lg: '12rem' },
-});
+})

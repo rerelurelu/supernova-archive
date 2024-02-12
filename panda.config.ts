@@ -1,11 +1,11 @@
-import { defineConfig, defineGlobalStyles } from '@pandacss/dev';
+import { defineConfig, defineGlobalStyles } from '@pandacss/dev'
 
 const globalCss = defineGlobalStyles({
   body: {
     fontFamily: 'Overpass',
     color: 'main',
   },
-});
+})
 
 export default defineConfig({
   jsxFramework: 'qwik',
@@ -67,4 +67,4 @@ export default defineConfig({
 
   // Global styles
   globalCss,
-});
+})

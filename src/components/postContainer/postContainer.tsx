@@ -1,51 +1,51 @@
-import { component$, useSignal, useTask$ } from '@builder.io/qwik';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeParse from 'rehype-parse';
-import rehypeSanitize from 'rehype-sanitize';
-import rehypeStringify from 'rehype-stringify';
-import { unified } from 'unified';
-import { css } from '~/styled-system/css';
+import { component$, useSignal, useTask$ } from '@builder.io/qwik'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeParse from 'rehype-parse'
+import rehypeSanitize from 'rehype-sanitize'
+import rehypeStringify from 'rehype-stringify'
+import { unified } from 'unified'
+import { css } from '~/styled-system/css'
 
 type Props = {
-  postContent: string;
-};
+  postContent: string
+}
 
 const highlight = async (content: string) => {
-  const regex = /(<pre><code class="language-.*?">[\s\S]*?<\/code><\/pre>)/g;
-  let match;
-  const matches = [];
+  const regex = /(<pre><code class="language-.*?">[\s\S]*?<\/code><\/pre>)/g
+  let match
+  const matches = []
 
   while ((match = regex.exec(content)) !== null) {
-    matches.push(match[1]);
+    matches.push(match[1])
   }
 
   for (const match of matches) {
-    const matchLanguage = match.match(/language-(.*?)"/);
-    const language = matchLanguage ? matchLanguage[1] : 'plaintext';
+    const matchLanguage = match.match(/language-(.*?)"/)
+    const language = matchLanguage ? matchLanguage[1] : 'plaintext'
 
     const file = await unified()
       .use(rehypeParse, { fragment: true })
       .use(rehypeSanitize)
       .use(rehypeHighlight)
       .use(rehypeStringify)
-      .process(`<pre><code class="language-${language}">${match}</code></pre>`);
+      .process(`<pre><code class="language-${language}">${match}</code></pre>`)
 
-    const highlighted = String(file);
-    content = content.replace(match, highlighted);
+    const highlighted = String(file)
+    content = content.replace(match, highlighted)
   }
-  return content;
-};
+  return content
+}
 
 export default component$(({ postContent }: Props) => {
-  const highlightedContent = useSignal('');
+  const highlightedContent = useSignal('')
   useTask$(async () => {
-    if (!postContent) return;
-    const content = await highlight(postContent);
-    highlightedContent.value = content;
-  });
+    if (!postContent) return
+    const content = await highlight(postContent)
+    highlightedContent.value = content
+  })
 
-  return <div class={postContainer} dangerouslySetInnerHTML={highlightedContent.value}></div>;
-});
+  return <div class={postContainer} dangerouslySetInnerHTML={highlightedContent.value}></div>
+})
 
 const postContainer = css({
   w: '100%',
@@ -158,4 +158,4 @@ const postContainer = css({
       fontSize: '1rem',
     },
   },
-});
+})

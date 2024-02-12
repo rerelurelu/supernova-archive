@@ -1,40 +1,40 @@
-import { fetchPost, fetchPosts } from '~/api/client';
-import PostContainer from '~/components/postContainer/postContainer';
-import { OG_IMAGE } from '~/const/seo';
-import { textSm } from '~/style/style';
-import { css } from '~/styled-system/css';
-import { divider } from '~/styled-system/patterns';
+import { fetchPost, fetchPosts } from '~/api/client'
+import PostContainer from '~/components/postContainer/postContainer'
+import { OG_IMAGE } from '~/const/seo'
+import { textSm } from '~/style/style'
+import { css } from '~/styled-system/css'
+import { divider } from '~/styled-system/patterns'
 
-import { component$ } from '@builder.io/qwik';
-import { routeLoader$ } from '@builder.io/qwik-city';
+import { component$ } from '@builder.io/qwik'
+import { routeLoader$ } from '@builder.io/qwik-city'
 
-import type { DocumentHead, StaticGenerateHandler } from '@builder.io/qwik-city';
-import type { Post } from '~/types';
+import type { DocumentHead, StaticGenerateHandler } from '@builder.io/qwik-city'
+import type { Post } from '~/types'
 export const usePostLoader = routeLoader$(async ({ params, status }) => {
   if (!params.postId) {
-    status(404);
+    status(404)
   }
 
   try {
-    const post = await fetchPost(params.postId);
-    return post;
+    const post = await fetchPost(params.postId)
+    return post
   } catch {
-    status(404);
+    status(404)
   }
-});
+})
 
 export default component$(() => {
-  const post = usePostLoader();
+  const post = usePostLoader()
 
   if (!post.value) {
-    return <></>;
+    return <></>
   }
 
   const dateDisplay = new Date(post.value.publishedAt).toLocaleDateString('en-us', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
-  });
+  })
 
   return (
     <article class={wrapper}>
@@ -58,26 +58,26 @@ export default component$(() => {
         <PostContainer postContent={post.value.content} />
       </div>
     </article>
-  );
-});
+  )
+})
 
 export const onStaticGenerate: StaticGenerateHandler = async () => {
-  const data = await fetchPosts();
+  const data = await fetchPosts()
 
   const paths = data.posts.map((post) => {
-    return post.id;
-  });
+    return post.id
+  })
 
   return {
     params: paths.map((postId) => {
-      return { postId };
+      return { postId }
     }),
-  };
-};
+  }
+}
 
 export const head: DocumentHead = ({ resolveValue }) => {
-  const post = resolveValue(usePostLoader) as Post;
-  const description = post.content.slice(0, 30);
+  const post = resolveValue(usePostLoader) as Post
+  const description = post.content.slice(0, 30)
 
   return {
     title: `${post.title} | relu`,
@@ -119,8 +119,8 @@ export const head: DocumentHead = ({ resolveValue }) => {
         content: OG_IMAGE.HEIGHT,
       },
     ],
-  };
-};
+  }
+}
 
 const wrapper = css({
   mx: 'auto',
@@ -130,30 +130,30 @@ const wrapper = css({
   flexDir: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-});
+})
 
 const header = css({
   display: 'grid',
   justifyItems: 'center',
   gap: '3rem',
-});
+})
 
 const title = css({
   fontSize: '2.25rem',
   lineHeight: '2.5rem',
   fontWeight: '600',
-});
+})
 
 const infoContainer = css({
   display: 'grid',
   justifyItems: 'center',
   gap: '0.25rem',
   fontSmoothing: 'antialiased',
-});
+})
 
 const infoText = css({
   fontWeight: '600',
-});
+})
 
 const postWrapper = css({
   mt: '5rem',
@@ -161,4 +161,4 @@ const postWrapper = css({
   fontSize: '1.125rem',
   lineHeight: '1.75rem',
   letterSpacing: '0.025rem',
-});
+})

@@ -1,8 +1,8 @@
-const PER_PAGE = 12;
-const VIEWPORT_OFFSET = '32px';
-const TOAST_WIDTH = 360;
-const GAP = 14;
-const TOAST_LIFETIME = 5000; // 5s default;
-const TIME_BEFORE_UNMOUNT = 200; // animation duration;
+const PER_PAGE = 12
+const VIEWPORT_OFFSET = '32px'
+const TOAST_WIDTH = 360
+const GAP = 14
+const TOAST_LIFETIME = 5000 // 5s default;
+const TIME_BEFORE_UNMOUNT = 200 // animation duration;
 
-export { GAP, PER_PAGE, TIME_BEFORE_UNMOUNT, TOAST_LIFETIME, TOAST_WIDTH, VIEWPORT_OFFSET };
+export { GAP, PER_PAGE, TIME_BEFORE_UNMOUNT, TOAST_LIFETIME, TOAST_WIDTH, VIEWPORT_OFFSET }
