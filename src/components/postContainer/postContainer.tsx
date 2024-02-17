@@ -151,11 +151,12 @@ const postContainer = css({
 
   '& pre': {
     pb: '2rem',
-    overflowY: 'scroll',
 
     '& code': {
+      mx: 0,
       borderRadius: '0.5rem',
       fontSize: '1rem',
+      overflowX: 'scroll',
     },
   },
 })
