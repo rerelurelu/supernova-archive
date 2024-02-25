@@ -1,4 +1,5 @@
-// Type
+import { DocumentMeta } from '@builder.io/qwik-city'
+
 type Opengraph = {
 	IMAGE: string
 	IMAGE_TYPE: string
@@ -13,3 +14,30 @@ export const OG_IMAGE: Opengraph = {
 	WIDTH: '700',
 	HEIGHT: '700',
 }
+
+export const baseMeta: DocumentMeta[] = [
+	{
+		name: 'type',
+		content: 'website',
+	},
+	{
+		property: 'og:type',
+		content: 'website',
+	},
+	{
+		property: 'og:image',
+		content: OG_IMAGE.IMAGE,
+	},
+	{
+		property: 'og:image:type',
+		content: OG_IMAGE.IMAGE_TYPE,
+	},
+	{
+		property: 'og:image:width',
+		content: OG_IMAGE.WIDTH,
+	},
+	{
+		property: 'og:image:height',
+		content: OG_IMAGE.HEIGHT,
+	},
+]
