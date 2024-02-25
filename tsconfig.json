@@ -23,6 +23,5 @@
       "~/styled-system/*": ["./src/styled-system/*"]
     }
   },
-  "files": ["./.eslintrc.cjs"],
   "include": ["src", "./*.d.ts", "./*.config.ts", "styled-system", "vite.config.ts"]
 }
