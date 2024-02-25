@@ -1,12 +1,12 @@
 export const getCurrentIndex = (pathname: string): string => {
-  const regex = /\/(\d+)\//g
-  const matches = pathname.match(regex)
+	const regex = /\/(\d+)\//g
+	const matches = pathname.match(regex)
 
-  if (!matches) {
-    return '1'
-  }
+	if (!matches) {
+		return '1'
+	}
 
-  const currentIndex = matches[matches.length - 1].replaceAll('/', '')
+	const currentIndex = matches[matches.length - 1].replaceAll('/', '')
 
-  return currentIndex
+	return currentIndex
 }

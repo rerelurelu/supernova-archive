@@ -12,64 +12,64 @@ import { routeLoader$, useLocation } from '@builder.io/qwik-city'
 import type { DocumentHead, Loader } from '@builder.io/qwik-city'
 import type { PostsData } from '~/types'
 export const usePostsLoader: Loader<PostsData> = routeLoader$(async () => {
-  const { posts, totalCount } = await fetchPosts({ limit: PER_PAGE, offset: 0 })
-  return { posts, totalCount }
+	const { posts, totalCount } = await fetchPosts({ limit: PER_PAGE, offset: 0 })
+	return { posts, totalCount }
 })
 
 export default component$(() => {
-  const loc = useLocation()
-  const currentIndex = getCurrentIndex(loc.url.pathname)
-  const data = usePostsLoader()
-  const totalCount = data.value.totalCount
-  const needPagination = totalCount > PER_PAGE
+	const loc = useLocation()
+	const currentIndex = getCurrentIndex(loc.url.pathname)
+	const data = usePostsLoader()
+	const totalCount = data.value.totalCount
+	const needPagination = totalCount > PER_PAGE
 
-  return (
-    <>
-      <ContentsTitle title={'Blog'} />
-      <BlogField posts={data.value.posts} />
-      {needPagination && <Pagination currentIndex={Number(currentIndex)} totalCount={totalCount} />}
-    </>
-  )
+	return (
+		<>
+			<ContentsTitle title={'Blog'} />
+			<BlogField posts={data.value.posts} />
+			{needPagination && <Pagination currentIndex={Number(currentIndex)} totalCount={totalCount} />}
+		</>
+	)
 })
 
 export const head: DocumentHead = {
-  title: 'Blog | relu',
-  meta: [
-    {
-      name: 'description',
-      content: `relu's blog list.`,
-    },
-    {
-      name: 'type',
-      content: 'website',
-    },
-    {
-      property: 'og:title',
-      content: 'Blog | relu',
-    },
-    {
-      property: 'og:description',
-      content: `relu's blog`,
-    },
-    {
-      property: 'og:type',
-      content: 'website',
-    },
-    {
-      property: 'og:image',
-      content: OG_IMAGE.IMAGE,
-    },
-    {
-      property: 'og:image:type',
-      content: OG_IMAGE.IMAGE_TYPE,
-    },
-    {
-      property: 'og:image:width',
-      content: OG_IMAGE.WIDTH,
-    },
-    {
-      property: 'og:image:height',
-      content: OG_IMAGE.HEIGHT,
-    },
-  ],
+	title: 'Blog | relu',
+	meta: [
+		{
+			name: 'description',
+			content: `relu's blog list.`,
+		},
+		{
+			name: 'type',
+			content: 'website',
+		},
+		{
+			property: 'og:title',
+			content: 'Blog | relu',
+		},
+		{
+			property: 'og:description',
+			content: `relu's blog`,
+		},
+		{
+			property: 'og:type',
+			content: 'website',
+		},
+		{
+			property: 'og:image',
+			content: OG_IMAGE.IMAGE,
+		},
+		{
+			property: 'og:image:type',
+			content: OG_IMAGE.IMAGE_TYPE,
+		},
+		{
+			property: 'og:image:width',
+			content: OG_IMAGE.WIDTH,
+		},
+		{
+			property: 'og:image:height',
+			content: OG_IMAGE.HEIGHT,
+		},
+	],
 }
