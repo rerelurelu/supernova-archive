@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import type { DocumentHead } from '@builder.io/qwik-city'
-import { OG_IMAGE } from '~/const/seo'
+import { baseMeta } from '~/const/seo'
 import { css } from '~/styled-system/css'
 import { divider } from '~/styled-system/patterns'
 
@@ -27,13 +27,10 @@ export default component$(() => {
 export const head: DocumentHead = {
 	title: '404 This page could not be found.',
 	meta: [
+		...baseMeta,
 		{
 			name: 'description',
 			content: '404 This page could not be found.',
-		},
-		{
-			name: 'type',
-			content: 'website',
 		},
 		{
 			property: 'og:title',
@@ -42,26 +39,6 @@ export const head: DocumentHead = {
 		{
 			property: 'og:description',
 			content: '404 This page could not be found.',
-		},
-		{
-			property: 'og:type',
-			content: 'website',
-		},
-		{
-			property: 'og:image',
-			content: OG_IMAGE.IMAGE,
-		},
-		{
-			property: 'og:image:type',
-			content: OG_IMAGE.IMAGE_TYPE,
-		},
-		{
-			property: 'og:image:width',
-			content: OG_IMAGE.WIDTH,
-		},
-		{
-			property: 'og:image:height',
-			content: OG_IMAGE.HEIGHT,
 		},
 	],
 }

@@ -1,13 +1,13 @@
 import { fetchPosts } from '~/api/client'
 import BlogField from '~/components/blogField/blogField'
 import Hero from '~/components/hero/hero'
-import { OG_IMAGE } from '~/const/seo'
 import { css } from '~/styled-system/css'
 
 import { component$ } from '@builder.io/qwik'
 import { routeLoader$ } from '@builder.io/qwik-city'
 
 import type { DocumentHead, Loader } from '@builder.io/qwik-city'
+import { baseMeta } from '~/const/seo'
 import type { PostsData } from '~/types'
 
 export const useRecentPostsLoader: Loader<PostsData> = routeLoader$(async () => {
@@ -30,43 +30,20 @@ export default component$(() => {
 })
 
 export const head: DocumentHead = {
-	title: 'relu',
+	title: 'Home | Relu',
 	meta: [
+		...baseMeta,
 		{
 			name: 'description',
-			content: `relu's personal website`,
-		},
-		{
-			name: 'type',
-			content: 'website',
+			content: `'Relu's personal website'`,
 		},
 		{
 			property: 'og:title',
-			content: 'relu',
+			content: 'Home | Relu',
 		},
 		{
 			property: 'og:description',
-			content: `relu's personal website`,
-		},
-		{
-			property: 'og:type',
-			content: 'website',
-		},
-		{
-			property: 'og:image',
-			content: OG_IMAGE.IMAGE,
-		},
-		{
-			property: 'og:image:type',
-			content: OG_IMAGE.IMAGE_TYPE,
-		},
-		{
-			property: 'og:image:width',
-			content: OG_IMAGE.WIDTH,
-		},
-		{
-			property: 'og:image:height',
-			content: OG_IMAGE.HEIGHT,
+			content: `Relu's personal website`,
 		},
 	],
 }

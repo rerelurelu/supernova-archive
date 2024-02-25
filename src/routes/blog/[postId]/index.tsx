@@ -1,6 +1,5 @@
 import { fetchPost, fetchPosts } from '~/api/client'
 import PostContainer from '~/components/postContainer/postContainer'
-import { OG_IMAGE } from '~/const/seo'
 import { textSm } from '~/style/style'
 import { css } from '~/styled-system/css'
 import { divider } from '~/styled-system/patterns'
@@ -9,7 +8,9 @@ import { component$ } from '@builder.io/qwik'
 import { routeLoader$ } from '@builder.io/qwik-city'
 
 import type { DocumentHead, StaticGenerateHandler } from '@builder.io/qwik-city'
+import { baseMeta } from '~/const/seo'
 import type { Post } from '~/types'
+
 export const usePostLoader = routeLoader$(async ({ params, status }) => {
 	if (!params.postId) {
 		status(404)
@@ -80,43 +81,20 @@ export const head: DocumentHead = ({ resolveValue }) => {
 	const description = post.content.slice(0, 30)
 
 	return {
-		title: `${post.title} | relu`,
+		title: `${post.title} | Relu`,
 		meta: [
+			...baseMeta,
 			{
 				name: 'description',
 				content: description,
 			},
 			{
-				name: 'type',
-				content: 'website',
-			},
-			{
 				property: 'og:title',
-				content: `${post.title} | relu`,
+				content: `${post.title} | Relu`,
 			},
 			{
 				property: 'og:description',
 				content: description,
-			},
-			{
-				property: 'og:type',
-				content: 'website',
-			},
-			{
-				property: 'og:image',
-				content: OG_IMAGE.IMAGE,
-			},
-			{
-				property: 'og:image:type',
-				content: OG_IMAGE.IMAGE_TYPE,
-			},
-			{
-				property: 'og:image:width',
-				content: OG_IMAGE.WIDTH,
-			},
-			{
-				property: 'og:image:height',
-				content: OG_IMAGE.HEIGHT,
 			},
 		],
 	}

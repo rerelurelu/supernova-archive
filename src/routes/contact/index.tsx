@@ -6,7 +6,7 @@ import type { InitialValues } from '@modular-forms/qwik'
 import { reset, useForm, zodForm$ } from '@modular-forms/qwik'
 import { Toaster, toast } from 'qwik-sonner'
 import ContentsTitle from '~/components/contentsTitle/contentsTitle'
-import { OG_IMAGE } from '~/const/seo'
+import { baseMeta } from '~/const/seo'
 import { css } from '~/styled-system/css'
 
 const sendMessageType = {
@@ -156,43 +156,20 @@ export default component$(() => {
 })
 
 export const head: DocumentHead = {
-	title: 'Contact | relu',
+	title: 'Contact | Relu',
 	meta: [
+		...baseMeta,
 		{
 			name: 'description',
 			content: 'Contact form',
 		},
 		{
-			name: 'type',
-			content: 'website',
-		},
-		{
 			property: 'og:title',
-			content: 'Contact | relu',
+			content: 'Contact | Relu',
 		},
 		{
 			property: 'og:description',
 			content: 'Contact form',
-		},
-		{
-			property: 'og:type',
-			content: 'website',
-		},
-		{
-			property: 'og:image',
-			content: OG_IMAGE.IMAGE,
-		},
-		{
-			property: 'og:image:type',
-			content: OG_IMAGE.IMAGE_TYPE,
-		},
-		{
-			property: 'og:image:width',
-			content: OG_IMAGE.WIDTH,
-		},
-		{
-			property: 'og:image:height',
-			content: OG_IMAGE.HEIGHT,
 		},
 	],
 }
