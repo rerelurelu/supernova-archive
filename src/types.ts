@@ -1,17 +1,17 @@
 export type tag = {
-  id: string
-  tagName: string
+	id: string
+	tagName: string
 }
 
 export type Post = {
-  publishedAt: string
-  title: string
-  id: string
-  content: string
-  tags: tag[]
+	publishedAt: string
+	title: string
+	id: string
+	content: string
+	tags: tag[]
 }
 
 export type PostsData = {
-  posts: Post[]
-  totalCount: number
+	posts: Post[]
+	totalCount: number
 }
