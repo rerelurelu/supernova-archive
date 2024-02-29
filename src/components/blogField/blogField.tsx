@@ -31,7 +31,7 @@ export default component$(({ posts }: Props) => {
 				})}
 			</div>
 			{isHome && (
-				<Link class={[link, textSm]} href={'/blog'}>
+				<Link class={[link, textSm]} href={'/blogs/1'}>
 					All Posts →
 				</Link>
 			)}

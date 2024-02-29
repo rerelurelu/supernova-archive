@@ -1,11 +1,10 @@
 import { describe, expect, test } from 'vitest'
 import { getPathname } from './getPathname'
 
-describe('現在開いているページのパス（ディレクトリ名）を取得できるか', () => {
+describe('現在開いているページのパス（ディレクトリ名）を取得できること', () => {
 	const paths = {
 		home: '/',
-		blogList: '/blog/',
-		blogListWithIndex: '/blog/page/1',
+		blogs: '/blogs/1',
 		blogDetail: '/blog/renewal-my-portfolio-site/',
 		about: '/about/',
 		contact: '/contact/',
@@ -17,11 +16,7 @@ describe('現在開いているページのパス（ディレクトリ名）を�
 	})
 
 	test('開いているページがBlog一覧の場合', () => {
-		expect(getPathname(paths.blogList)).toBe('blog')
-	})
-
-	test('開いているページがBlog一覧かつページインデックスが2以上の場合', () => {
-		expect(getPathname(paths.blogList)).toBe('blog')
+		expect(getPathname(paths.blogs)).toBe('blog')
 	})
 
 	test('開いているページがBlog詳細の場合', () => {

@@ -1,7 +1,7 @@
 import { $, component$, useOnWindow, useStore, useVisibleTask$ } from '@builder.io/qwik'
-import { Link } from '@builder.io/qwik-city'
+import { useNavigate } from '@builder.io/qwik-city'
 import { HiChevronLeftSolid, HiChevronRightSolid } from '@qwikest/icons/heroicons'
-import { css } from '~/styled-system/css'
+import { css, cva } from '~/styled-system/css'
 import { PER_PAGE } from '~/utils/constants'
 import { getPagination } from '~/utils/getPagination'
 
@@ -13,7 +13,7 @@ type Props = {
 export default component$(({ totalCount, currentIndex }: Props) => {
 	const store = useStore({ width: 0 })
 	const maxIndex = Math.ceil(totalCount / PER_PAGE)
-	const rootUrl = '/blog'
+	const nav = useNavigate()
 
 	useVisibleTask$(() => {
 		store.width = window.innerWidth
@@ -29,32 +29,44 @@ export default component$(({ totalCount, currentIndex }: Props) => {
 	const isLaptop = store.width >= 1024
 	const pagination = getPagination(maxIndex, currentIndex, isLaptop)
 
+	const handlePagination = $(async (index: number) => {
+		await nav(`/blogs/${index}`)
+	})
+
 	return (
 		<div class={wrapper}>
 			{currentIndex !== 1 && (
-				<Link href={currentIndex === 2 ? rootUrl : `/blog/page/${currentIndex - 1}`}>
-					<li class={iconContainer}>
+				<li class={iconContainer}>
+					<button
+						type='button'
+						class={button({ visual: 'icon' })}
+						onClick$={async () => await handlePagination(currentIndex - 1)}
+					>
 						<HiChevronLeftSolid class={icon} />
-					</li>
-				</Link>
+					</button>
+				</li>
 			)}
 			{pagination.map((number) => (
 				<li class={indexContainer} key={number}>
-					{currentIndex === number ? (
-						<span>{number}</span>
-					) : (
-						<Link class={pageIndex} href={number === 1 ? rootUrl : `/blog/page/${number}`}>
-							{number}
-						</Link>
-					)}
+					<button
+						type='button'
+						class={button({ visual: currentIndex === number ? 'currentPage' : 'default' })}
+						onClick$={async () => await handlePagination(number)}
+					>
+						{number}
+					</button>
 				</li>
 			))}
 			{currentIndex !== maxIndex && (
-				<Link href={`/blog/page/${Number(currentIndex) + 1}`}>
-					<li class={iconContainer}>
+				<li class={iconContainer}>
+					<button
+						type='button'
+						class={button({ visual: 'icon' })}
+						onClick$={async () => await handlePagination(currentIndex + 1)}
+					>
 						<HiChevronRightSolid class={icon} />
-					</li>
-				</Link>
+					</button>
+				</li>
 			)}
 		</div>
 	)
@@ -66,7 +78,7 @@ const wrapper = css({
 	justifyContent: 'center',
 	alignItems: 'center',
 	flexWrap: 'wrap',
-	gap: '0.75rem',
+	gap: '0.5rem',
 })
 
 const indexContainer = css({
@@ -76,16 +88,6 @@ const indexContainer = css({
 	display: 'grid',
 	placeItems: 'center',
 	textAlign: 'center',
-})
-
-const pageIndex = css({
-	border: '2px solid token(colors.paginationBorder)',
-	borderRadius: '50%',
-	display: 'block',
-	w: '100%',
-	_hover: {
-		opacity: '0.7',
-	},
 })
 
 const iconContainer = css({
@@ -104,5 +106,23 @@ const icon = css({
 	color: 'paginationIcon',
 	_hover: {
 		opacity: '0.7',
+	},
+})
+
+const button = cva({
+	base: {
+		pt: '3px',
+		w: '40px',
+		cursor: 'pointer',
+		color: 'white',
+		borderRadius: '10px',
+		textAlign: 'center',
+	},
+	variants: {
+		visual: {
+			default: { bg: 'transparent', _hover: { bg: '#ffffff1a' } },
+			currentPage: { bg: '#ad5bba', _hover: { opacity: '0.7' } },
+			icon: { w: '20px', h: '40px', pt: 0, bg: 'transparent', _hover: { opacity: '0.7' } },
+		},
 	},
 })
