@@ -1,4 +1,4 @@
-const PER_PAGE = 12
+const PER_PAGE = 9
 const VIEWPORT_OFFSET = '32px'
 const TOAST_WIDTH = 360
 const GAP = 14
