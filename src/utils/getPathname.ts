@@ -1,14 +1,14 @@
-export const getPathname = (inputString: string): string => {
-	if (inputString === '/') {
-		return 'home'
-	}
+export const getPathname = (url: string): string => {
+	if (url === '/') return 'home'
 
 	const regex = /\/([^/]+)\//g
-	const matches = inputString.match(regex)
+	const matches = url.match(regex)
 
-	if (!matches) {
-		return ''
-	}
+	if (!matches) return ''
 
-	return matches[0].replaceAll('/', '')
+	const pathname = matches[0].replaceAll('/', '')
+
+	if (pathname === 'blogs') return 'blog'
+
+	return pathname
 }
